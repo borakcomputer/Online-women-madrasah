@@ -1,0 +1,3606 @@
+/* ============================================================
+   01. GLOBAL SETUP / প্রজেক্টের প্রাথমিক সেটআপ
+   ============================================================ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/* ============================================================
+   02. ROOT VARIABLES & BASE THEME / মূল রং ও গ্লোবাল ভ্যারিয়েবল
+   ============================================================ */
+:root {
+  font-family: "Hind Siliguri", sans-serif;
+  color: #182336;
+  background: #fafbfd;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --green: #0a4aa0;
+  --green-deep: #0a2c66;
+  --gold: #4f8f57;
+  --cream: #eef3fa;
+  --ink: #16223a;
+  --muted: #64708a;
+  --line: #d9e2f0;
+  --sage: #6fa376;
+  --sage-soft: #e6f1e7;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+body {
+  margin: 0;
+  background: #fafbfd;
+  color: var(--ink);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+}
+.container {
+  width: min(1160px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+/* ============================================================
+   03. TOP INFO BAR / উপরের তথ্যবার
+   ============================================================ */
+.top-strip {
+  background: var(--green-deep);
+  color: #cbd5e6;
+  font-size: 13px;
+}
+.top-strip-inner {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-strip-inner > span:first-child {
+  font-family: serif;
+  letter-spacing: 0.5px;
+}
+.top-note {
+  opacity: 0.8;
+}
+
+/* ============================================================
+   04. HEADER, LOGO & NAVIGATION / হেডার, লোগো ও মেনু
+   ============================================================ */
+.site-header {
+  height: 84px;
+  background: #fafbfd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(23, 43, 78, 0.08);
+  transition:
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-mark {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e8ebf1;
+  color: var(--green);
+  border: 1px solid #d6dce7;
+}
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.45;
+}
+.brand-copy strong {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+.brand-copy small {
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  color: #458147;
+}
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+}
+.main-nav > a:not(.nav-cta) {
+  font-size: 14px;
+  color: #384e74;
+  transition: color 0.2s;
+}
+.main-nav > a:hover {
+  color: var(--gold);
+}
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--green);
+  color: white;
+  padding: 12px 17px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+.mobile-menu {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--green);
+}
+
+/* ============================================================
+   05. HERO / HOME BANNER SECTION / হোমপেজের প্রধান ব্যানার
+   ============================================================ */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(112deg, #edf1f7 0%, #edf1f7 52%, #f0f2e9 100%);
+  padding: 76px 0 22px;
+}
+.hero-pattern {
+  position: absolute;
+  right: -130px;
+  top: -220px;
+  width: 570px;
+  height: 570px;
+  border: 1px solid rgba(77, 143, 79, 0.17);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 36px rgba(77, 143, 79, 0.035),
+    0 0 0 72px rgba(77, 143, 79, 0.025);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.02fr;
+  gap: 65px;
+  align-items: center;
+  position: relative;
+}
+.hero-copy {
+  padding: 5px 0 24px;
+}
+.eyebrow,
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #3a6c3c;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.eyebrow > span {
+  height: 7px;
+  width: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(77, 143, 79, 0.13);
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+.hero-copy h1 {
+  font-family: "Noto Serif Bengali", serif;
+  font-size: clamp(37px, 4.2vw, 56px);
+  line-height: 1.42;
+  letter-spacing: -1.6px;
+  color: var(--green-deep);
+  font-weight: 600;
+  margin: 22px 0 17px;
+}
+.hero-copy h1 em,
+.intro-copy h2 em,
+.section-heading h2 em,
+.why-copy h2 em,
+.faq-grid h2 em,
+.contact-card h2 em {
+  font-style: normal;
+  color: #437c45;
+}
+.hero-description {
+  max-width: 480px;
+  color: #4a679a;
+  line-height: 2;
+  font-size: 15px;
+  margin-bottom: 27px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-wrap: wrap;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 21px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+.button:hover {
+  transform: translateY(-2px);
+}
+.button-primary {
+  background: var(--green);
+  color: #ffffff;
+  box-shadow: 0 7px 18px rgba(23, 43, 78, 0.13);
+}
+.button-primary:hover {
+  background: #0f203d;
+}
+.button-outline {
+  border: 1px solid #c3dec4;
+  color: var(--green);
+}
+.play-icon {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e4e8ef;
+  font-size: 9px;
+  padding-left: 2px;
+}
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 35px;
+  color: #506fa6;
+  font-size: 12px;
+}
+.trust-icon {
+  color: #407742;
+}
+.trust-divider {
+  height: 15px;
+  width: 1px;
+  background: #c3dec4;
+  margin: 0 3px;
+}
+.hero-visual {
+  position: relative;
+  padding: 0 8px 22px 0;
+}
+.hero-image-wrap {
+  height: 430px;
+  position: relative;
+  border-radius: 47% 47% 5px 5px;
+  overflow: hidden;
+  border: 9px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 22px 55px rgba(30, 43, 63, 0.13);
+}
+.hero-image-wrap:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(13, 23, 41, 0.43), transparent 45%);
+}
+.hero-image-wrap img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.image-caption {
+  position: absolute;
+  z-index: 1;
+  bottom: 22px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+.caption-icon {
+  height: 42px;
+  width: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+}
+.image-caption strong,
+.image-caption small,
+.floating-note strong,
+.floating-note small {
+  display: block;
+}
+.image-caption strong {
+  font-size: 14px;
+}
+.image-caption small {
+  font-size: 11px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+.floating-note {
+  position: absolute;
+  right: -30px;
+  top: 58px;
+  z-index: 2;
+  background: white;
+  padding: 14px 17px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-radius: 5px;
+  box-shadow: 0 12px 35px #17263e1c;
+}
+.floating-note strong {
+  font-size: 12px;
+  color: var(--green);
+}
+.floating-note small {
+  font-size: 10px;
+  color: #899087;
+  margin-top: 3px;
+}
+.floating-star {
+  color: var(--gold);
+  font-size: 24px;
+}
+.hero-dots {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: -30px;
+  width: 110px;
+  height: 85px;
+  background-image: radial-gradient(#5ea860 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 30px;
+  color: #879087;
+  font-size: 11px;
+}
+.hero-bottom span:first-child {
+  font-family: serif;
+  color: #3f7541;
+  font-size: 16px;
+}
+
+/* ============================================================
+   06. INTRODUCTION SECTION / পরিচিতি সেকশন
+   ============================================================ */
+.section-pad {
+  padding: 96px 0;
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 95px;
+  align-items: center;
+}
+.intro-image {
+  height: 430px;
+  position: relative;
+  padding: 0 28px 25px 0;
+}
+.intro-image:before {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 25px;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #afd2b0;
+  border-radius: 5px;
+}
+.intro-image img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.intro-image-label {
+  position: absolute;
+  right: -15px;
+  bottom: 0;
+  background: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 35px #17263e16;
+}
+.intro-image-label > span {
+  font-family: serif;
+  color: var(--gold);
+  font-size: 24px;
+}
+.intro-image-label strong,
+.intro-image-label small {
+  display: block;
+}
+.intro-image-label strong {
+  font-size: 13px;
+  color: var(--green);
+}
+.intro-image-label small {
+  font-size: 11px;
+  color: #8b918a;
+}
+.intro-copy h2,
+.section-heading h2,
+.why-copy h2,
+.faq-grid h2,
+.contact-card h2 {
+  font-family: "Noto Serif Bengali", serif;
+  font-size: 36px;
+  line-height: 1.55;
+  color: var(--green-deep);
+  margin: 15px 0;
+}
+.intro-copy > p,
+.why-copy > p,
+.faq-grid > div > p {
+  font-size: 14px;
+  line-height: 2.05;
+  color: #5170a7;
+  max-width: 490px;
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 13px;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid #65ac67;
+  padding-bottom: 7px;
+}
+
+/* ============================================================
+   07. COURSES SECTION / কোর্সসমূহ
+   ============================================================ */
+.courses-section {
+  background: #f1f4f8;
+}
+.section-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 44px;
+}
+.section-heading h2 {
+  font-size: 34px;
+  margin: 13px 0 7px;
+}
+.section-heading > p {
+  font-size: 14px;
+  color: #5676ad;
+  line-height: 1.9;
+}
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.course-card {
+  background: #ffffff;
+  border: 1px solid #e1e6f0;
+  padding: 25px 22px 23px;
+  min-height: 294px;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s,
+    border 0.25s;
+}
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 17px 35px #1c2d4a0d;
+  border-color: #afd2b0;
+}
+.course-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.course-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #eaedf3;
+  color: var(--green);
+}
+.course-number {
+  font-family: serif;
+  color: #afd2b0;
+  font-size: 20px;
+}
+.course-tag {
+  font-size: 10px;
+  color: #3b6d3c;
+  background: #ebeff6;
+  padding: 5px 9px;
+  align-self: flex-start;
+}
+.course-card h3 {
+  font-family: "Noto Serif Bengali", serif;
+  font-size: 17px;
+  color: var(--green-deep);
+  margin: 13px 0 8px;
+}
+.course-card p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #5676ad;
+  margin-bottom: 20px;
+}
+.course-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   08. WHY CHOOSE US & BENEFITS / কেন আমাদের বেছে নেবেন
+   ============================================================ */
+.why-section {
+  background: var(--green-deep);
+  color: #ffffff;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+.why-copy .section-kicker {
+  color: #62ab65;
+}
+.why-copy h2 {
+  color: white;
+  font-size: 36px;
+}
+.why-copy h2 em {
+  color: #65ac68;
+}
+.why-copy > p {
+  color: #bac4d5;
+}
+.button-light {
+  background: #edf1f7;
+  color: var(--green);
+  margin-top: 13px;
+}
+.benefit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 33px 27px;
+}
+.benefit-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+.benefit-icon {
+  height: 43px;
+  min-width: 43px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #ffffff14;
+  color: #74b476;
+}
+.benefit-item h3 {
+  font-size: 15px;
+  color: #ffffff;
+  margin: 1px 0 6px;
+}
+.benefit-item p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #b2bdd0;
+  margin: 0;
+}
+
+/* ============================================================
+   09. ADMISSION STEPS / ভর্তি প্রক্রিয়ার ধাপ
+   ============================================================ */
+.steps-section {
+  background: #fafbfd;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 35px 1fr 35px 1fr;
+  align-items: center;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.step {
+  text-align: center;
+  padding: 20px;
+}
+.step > span {
+  display: grid;
+  place-items: center;
+  margin: 0 auto 15px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #b0d2b1;
+  border-radius: 50%;
+  font-family: serif;
+  color: #3a6c3c;
+  font-size: 20px;
+  background: #f2f5f9;
+}
+.step h3 {
+  font-family: "Noto Serif Bengali", serif;
+  color: var(--green);
+  font-size: 17px;
+  margin-bottom: 7px;
+}
+.step p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #879087;
+  margin: 0;
+}
+.step-arrow {
+  color: #559e58;
+  display: grid;
+  place-items: center;
+}
+
+/* ============================================================
+   10. FAQ SECTION / সাধারণ প্রশ্নোত্তর
+   ============================================================ */
+.faq-section {
+  background: #f1f4f8;
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 90px;
+}
+.faq-grid h2 {
+  font-size: 34px;
+}
+.faq-list {
+  border-top: 1px solid #d2dbea;
+}
+.faq-item {
+  border-bottom: 1px solid #d2dbea;
+}
+.faq-item button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 4px;
+  text-align: left;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.faq-item button svg {
+  transition: transform 0.2s;
+  color: #407742;
+}
+.faq-item.active button svg {
+  transform: rotate(180deg);
+}
+.faq-item > p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #5475ad;
+  padding: 0 30px 18px 4px;
+  margin: 0;
+}
+
+/* ============================================================
+   11. CONTACT SECTION / যোগাযোগ সেকশন
+   ============================================================ */
+.contact-section {
+  padding: 75px 0;
+  background: #fafbfd;
+}
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 64px 24px;
+  background: #e9eef5;
+  border: 1px solid #d1dae9;
+}
+.contact-card:before,
+.contact-card:after {
+  content: "✧";
+  position: absolute;
+  color: #a7cea9;
+  font-size: 110px;
+  opacity: 0.3;
+}
+.contact-card:before {
+  left: 7%;
+  top: 0;
+}
+.contact-card:after {
+  right: 7%;
+  bottom: -35px;
+}
+.contact-ornament {
+  color: #447f46;
+  font-size: 22px;
+}
+.contact-card h2 {
+  font-size: 36px;
+  margin: 12px 0;
+}
+.contact-card > p {
+  font-size: 14px;
+  color: #5475ad;
+  margin: 0 auto 24px;
+}
+.contact-note {
+  display: block;
+  margin-top: 14px;
+  color: #9a9c91;
+  font-size: 10px;
+}
+
+/* ============================================================
+   12. FOOTER / ওয়েবসাইটের নিচের অংশ
+   ============================================================ */
+.site-footer {
+  background: #101f38;
+  color: #e7eaf0;
+}
+.footer-main {
+  padding: 45px 0 35px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.2fr;
+  gap: 35px;
+  align-items: center;
+}
+.footer-brand .brand-mark {
+  background: #ffffff13;
+  color: #a0caa2;
+  border-color: #ffffff24;
+}
+.footer-brand .brand-copy strong {
+  color: #ffffff;
+}
+.footer-brand .brand-copy small {
+  color: #acb8cd;
+}
+.footer-main > p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #aebacf;
+  margin: 0;
+}
+.footer-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 17px;
+  flex-wrap: wrap;
+}
+.footer-links a,
+.footer-bottom {
+  font-size: 11px;
+  color: #b9c3d5;
+}
+.footer-links a:hover,
+.footer-bottom a:hover {
+  color: #a2cba4;
+}
+.footer-bottom {
+  border-top: 1px solid #ffffff1b;
+  padding: 17px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* ============================================================
+   13. RESPONSIVE LAYOUT — TABLET / ট্যাবলেট স্ক্রিনের ডিজাইন
+   ============================================================ */
+@media (max-width: 1000px) {
+  .main-nav {
+    gap: 17px;
+  }
+  .main-nav > a:not(.nav-cta) {
+    font-size: 12px;
+  }
+  .hero-grid {
+    gap: 35px;
+  }
+  .hero-image-wrap {
+    height: 380px;
+  }
+  .floating-note {
+    right: -8px;
+  }
+  .course-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .intro-grid {
+    gap: 55px;
+  }
+  .why-grid {
+    gap: 45px;
+  }
+  .faq-grid {
+    gap: 55px;
+  }
+}
+
+/* ============================================================
+   14. RESPONSIVE LAYOUT — MOBILE / মোবাইল স্ক্রিনের ডিজাইন
+   ============================================================ */
+@media (max-width: 760px) {
+  .container {
+    width: min(100% - 36px, 560px);
+  }
+  .top-strip-inner {
+    height: 32px;
+  }
+  .top-note {
+    display: none;
+  }
+  .site-header {
+    height: 72px;
+  }
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
+  .brand-copy strong {
+    font-size: 14px;
+  }
+  .brand-copy small {
+    font-size: 10px;
+  }
+  .mobile-menu {
+    display: grid;
+    place-items: center;
+    padding: 8px;
+  }
+  .main-nav {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 72px;
+    background: #fafbfd;
+    padding: 14px 22px 22px;
+    box-shadow: 0 15px 25px #18233612;
+    align-items: stretch;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .main-nav.is-open {
+    display: flex;
+    flex-direction: column;
+  }
+  .main-nav > a:not(.nav-cta) {
+    font-size: 14px;
+    padding: 12px 4px;
+    border-bottom: 1px solid #e3e9f2;
+  }
+  .nav-cta {
+    justify-content: center;
+    margin-top: 13px;
+  }
+  .hero-section {
+    padding: 49px 0 18px;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .hero-copy {
+    padding: 0;
+  }
+  .hero-copy h1 {
+    font-size: clamp(34px, 9vw, 47px);
+    margin: 17px 0 12px;
+  }
+  .hero-description {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .hero-trust {
+    font-size: 10px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+  .hero-visual {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .hero-image-wrap {
+    height: 320px;
+    border-radius: 46% 46% 5px 5px;
+  }
+  .floating-note {
+    right: -23px;
+    top: 35px;
+    padding: 10px 12px;
+  }
+  .floating-note strong {
+    font-size: 10px;
+  }
+  .floating-note small {
+    font-size: 9px;
+  }
+  .hero-bottom {
+    margin-top: 19px;
+    gap: 9px;
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 10px;
+  }
+  .section-pad {
+    padding: 66px 0;
+  }
+  .intro-grid,
+  .why-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .intro-image {
+    height: 330px;
+    width: 92%;
+    margin: 0 auto;
+  }
+  .intro-copy h2,
+  .section-heading h2,
+  .why-copy h2,
+  .faq-grid h2,
+  .contact-card h2 {
+    font-size: 29px;
+  }
+  .intro-copy > p,
+  .why-copy > p,
+  .faq-grid > div > p {
+    font-size: 13px;
+  }
+  .section-heading {
+    margin-bottom: 30px;
+  }
+  .section-heading h2 {
+    font-size: 27px;
+  }
+  .section-heading > p {
+    font-size: 12px;
+  }
+  .course-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+  .course-card {
+    min-height: 0;
+    padding: 21px;
+  }
+  .course-card p {
+    margin-bottom: 16px;
+  }
+  .why-grid {
+    gap: 32px;
+  }
+  .benefit-grid {
+    gap: 25px 16px;
+  }
+  .benefit-item {
+    gap: 10px;
+  }
+  .benefit-icon {
+    height: 38px;
+    min-width: 38px;
+  }
+  .benefit-item h3 {
+    font-size: 13px;
+  }
+  .benefit-item p {
+    font-size: 11px;
+  }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .step {
+    padding: 15px;
+  }
+  .step-arrow {
+    transform: rotate(-90deg);
+    height: 24px;
+  }
+  .faq-grid {
+    gap: 25px;
+  }
+  .faq-item button {
+    font-size: 13px;
+    padding: 16px 3px;
+  }
+  .faq-item > p {
+    font-size: 12px;
+  }
+  .contact-section {
+    padding: 45px 0;
+  }
+  .contact-card {
+    padding: 48px 17px;
+  }
+  .contact-card h2 {
+    font-size: 29px;
+  }
+  .contact-card > p {
+    font-size: 12px;
+    line-height: 1.9;
+  }
+  .contact-card:before {
+    left: -15px;
+    font-size: 75px;
+  }
+  .contact-card:after {
+    right: -15px;
+    font-size: 75px;
+  }
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 35px 0 25px;
+  }
+  .footer-main > p {
+    max-width: 360px;
+  }
+  .footer-links {
+    justify-content: flex-start;
+    gap: 15px;
+  }
+  .footer-bottom {
+    font-size: 10px;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .button {
+    font-size: 12px;
+    padding: 12px 15px;
+  }
+}
+
+/* ============================================================
+   15. ACCESSIBILITY — REDUCED MOTION / অ্যানিমেশন কমানোর অ্যাক্সেসিবিলিটি সেটিং
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+.brand-logo {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+/* ============================================================
+   16. LANGUAGE SWITCHER / ভাষা পরিবর্তনের বাটন
+   ============================================================ */
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid #d6dce7;
+  border-radius: 6px;
+  background: #f1f4f8;
+}
+.language-switch button {
+  border: 0;
+  border-radius: 4px;
+  padding: 7px 9px;
+  background: transparent;
+  color: var(--green);
+  font-size: 12px;
+  cursor: pointer;
+}
+.language-switch button.active {
+  background: var(--green);
+  color: #ffffff;
+}
+@media (max-width: 760px) {
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+  }
+  .brand {
+    gap: 8px;
+  }
+  .brand-copy strong {
+    font-size: 12px;
+  }
+  .brand-copy small {
+    font-size: 9px;
+  }
+  .language-switch {
+    margin-left: auto;
+    margin-right: 6px;
+    gap: 1px;
+    padding: 2px;
+  }
+  .language-switch button {
+    padding: 5px 6px;
+    font-size: 10px;
+  }
+  .mobile-menu {
+    padding: 5px;
+  }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .brand-logo {
+    width: 50px;
+    height: 50px;
+  }
+  .brand {
+    gap: 8px;
+  }
+  .brand-copy strong {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .brand-copy small {
+    font-size: 10px;
+  }
+  .main-nav {
+    gap: 10px;
+  }
+  .main-nav > a:not(.nav-cta) {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .nav-cta {
+    padding: 9px 10px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .language-switch button {
+    padding: 6px 6px;
+    font-size: 11px;
+  }
+}
+
+/* PDF specification: registration and payment workflow */
+
+/* ============================================================
+   17. REGISTRATION FORM (GENERAL) / রেজিস্ট্রেশন ফর্মের সাধারণ স্টাইল
+   ============================================================ */
+.registration-form {
+  max-width: 850px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 30px;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 35px #17263e0b;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+.registration-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--green-deep);
+  font-size: 13px;
+  font-weight: 600;
+}
+.registration-form input,
+.registration-form select,
+.registration-form textarea {
+  width: 100%;
+  border: 1px solid #dedfd5;
+  border-radius: 4px;
+  background: #fafbfd;
+  padding: 12px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+}
+.registration-form input:focus,
+.registration-form select:focus,
+.registration-form textarea:focus {
+  outline: 2px solid #4d8f4f;
+  outline-offset: 1px;
+}
+.form-wide {
+  grid-column: 1/-1;
+}
+.form-hint {
+  max-width: 850px;
+  margin: 18px auto;
+  color: var(--muted);
+  font-size: 13px;
+}
+.registration-form [role="status"] {
+  margin: 16px 0 0;
+  padding: 12px;
+  background: #f4f6ef;
+  color: var(--green);
+  font-size: 13px;
+}
+.registration-form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.curriculum-extra .course-card {
+  min-height: 220px;
+}
+.site-footer a {
+  cursor: pointer;
+}
+@media (max-width: 650px) {
+  .registration-form {
+    padding: 20px 15px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-wide {
+    grid-column: auto;
+  }
+}
+
+/* ============================================================
+   18. ADMIN DASHBOARD / অ্যাডমিন ড্যাশবোর্ড
+   ============================================================ */
+.admin-page {
+  padding: 50px 0 80px;
+  min-height: 70vh;
+}
+.admin-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.admin-head h1 {
+  color: var(--green);
+  margin: 8px 0;
+}
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 25px 0 40px;
+}
+.admin-stats article {
+  padding: 22px;
+  background: #e9eef5;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.admin-stats b {
+  font-size: 30px;
+  color: var(--green);
+}
+.admin-stats span {
+  font-size: 13px;
+  color: var(--muted);
+}
+.admin-page h2 {
+  margin: 32px 0 15px;
+  color: var(--green);
+}
+.admin-table-wrap {
+  overflow-x: auto;
+  background: white;
+  border: 1px solid var(--line);
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+  font-size: 13px;
+}
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.admin-table th {
+  background: #e9eef5;
+  color: var(--green);
+}
+.admin-table small {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.admin-table select {
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: white;
+}
+@media (max-width: 650px) {
+  .admin-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .admin-head {
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+  }
+}
+
+/* ============================================================
+   19. BRAND COLOR THEME OVERRIDES / লোগো অনুযায়ী রঙ ও থিমের পরিবর্তন
+   ============================================================ */
+
+/* ============================================================
+   32. SMART STICKY HEADER ANIMATION / স্ক্রল অনুযায়ী হেডার দেখানো-লুকানো
+   ============================================================ */
+/* =========================================================
+   Logo theme: royal blue + navy + sage green
+   ========================================================= */
+.site-header {
+  background: #ffffff;
+}
+.top-strip {
+  background: linear-gradient(90deg, var(--green-deep), var(--green));
+}
+.nav-cta,
+.button-primary {
+  background: linear-gradient(135deg, var(--green), var(--green-deep));
+  border-radius: 8px;
+}
+.nav-cta:hover,
+.button-primary:hover {
+  background: linear-gradient(135deg, #0d58bd, var(--green));
+}
+.button {
+  border-radius: 8px;
+}
+.button-outline {
+  border-color: #bcd0ea;
+}
+.button-outline:hover {
+  background: var(--sage-soft);
+  border-color: var(--sage);
+}
+.button-outline-light {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+.button-outline-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.hero-section {
+  background: linear-gradient(112deg, #f3f7fc 0%, #f3f7fc 50%, #e8f2ea 100%);
+}
+.course-card,
+.benefit-item,
+.step {
+  border-radius: 14px;
+}
+.course-card {
+  border-top: 3px solid transparent;
+}
+.course-card:hover {
+  border-top-color: var(--sage);
+}
+.course-icon {
+  background: var(--sage-soft);
+  color: var(--gold);
+}
+.course-card:hover .course-icon {
+  background: var(--green);
+  color: #fff;
+}
+.course-icon {
+  transition:
+    background 0.25s,
+    color 0.25s,
+    transform 0.35s;
+}
+.course-card:hover .course-icon {
+  transform: rotate(-8deg) scale(1.06);
+}
+.why-section,
+#why-us {
+  background: linear-gradient(160deg, var(--green-deep), var(--green));
+}
+#why-us {
+  color: #fff;
+}
+#why-us .why-copy h2,
+#why-us .benefit-item h3 {
+  color: #fff;
+}
+#why-us .why-copy > p,
+#why-us .benefit-item p {
+  color: #cfe0f5;
+}
+#why-us .why-copy .section-kicker {
+  color: #b9e0be;
+}
+#why-us .why-copy h2 em {
+  color: #b9e0be;
+}
+#why-us .benefit-icon {
+  background: #ffffff1a;
+  color: #b9e0be;
+}
+.contact-card {
+  border-radius: 20px;
+  background: linear-gradient(160deg, #0a2c66, #0a4aa0);
+  border: 0;
+  color: #fff;
+}
+.contact-card h2,
+.contact-card h3 {
+  color: #fff;
+}
+.contact-card h2 em,
+.contact-card .section-kicker,
+.contact-ornament {
+  color: #b9e0be;
+}
+.contact-card > p,
+.contact-card p {
+  color: #d7e4f6;
+}
+.contact-card:before,
+.contact-card:after {
+  color: #fff;
+  opacity: 0.08;
+}
+.contact-card .button-primary {
+  background: linear-gradient(135deg, #5fa069, #3f7f4a);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+.contact-card .button-light {
+  background: #fff;
+  color: var(--green);
+}
+.contact-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.site-footer {
+  background: #0a2250;
+}
+.footer-brand .brand-mark {
+  color: #b9e0be;
+}
+.footer-links a:hover,
+.footer-bottom a:hover {
+  color: #b9e0be;
+}
+.brand-logo {
+  border-radius: 10px;
+  background: #fff;
+}
+.section-kicker,
+.eyebrow {
+  color: var(--gold);
+}
+.eyebrow > span {
+  background: var(--sage);
+  box-shadow: 0 0 0 5px rgba(111, 163, 118, 0.2);
+}
+.hero-copy h1 em,
+.intro-copy h2 em,
+.section-heading h2 em,
+.why-copy h2 em,
+.faq-grid h2 em {
+  color: var(--gold);
+}
+.faq-item button svg,
+.trust-icon,
+.step-arrow,
+.floating-star {
+  color: var(--sage);
+}
+
+/* ---------- Animation ---------- */
+
+/* ============================================================
+   20. ANIMATIONS & REVEAL EFFECTS / অ্যানিমেশন ও স্ক্রল রিভিল ইফেক্ট
+   ============================================================ */
+@keyframes owm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes owm-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes owm-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+@keyframes owm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes owm-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(111, 163, 118, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(111, 163, 118, 0);
+  }
+}
+@keyframes owm-shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+.hero-copy > * {
+  animation: owm-rise 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-copy > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.hero-copy > *:nth-child(2) {
+  animation-delay: 0.16s;
+}
+.hero-copy > *:nth-child(3) {
+  animation-delay: 0.28s;
+}
+.hero-copy > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.hero-copy > *:nth-child(5) {
+  animation-delay: 0.52s;
+}
+.hero-image-wrap {
+  animation: owm-pop 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+}
+.floating-note {
+  animation:
+    owm-rise 0.8s 0.7s both,
+    owm-float 5.5s ease-in-out 1.6s infinite;
+}
+.floating-star {
+  display: inline-block;
+  animation: owm-spin 16s linear infinite;
+}
+.hero-pattern {
+  animation: owm-spin 120s linear infinite;
+}
+.eyebrow > span {
+  animation: owm-ring 2.2s ease-out infinite;
+}
+.button-primary {
+  background-size: 200% 100%;
+}
+.button-primary:hover {
+  animation: owm-shimmer 1.4s linear infinite;
+}
+.hero-image-wrap img {
+  transition: transform 1.2s ease;
+}
+.hero-image-wrap:hover img {
+  transform: scale(1.05);
+}
+.intro-image img {
+  transition: transform 0.8s ease;
+}
+.intro-image:hover img {
+  transform: scale(1.03);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   21. REGISTRATION & PAYMENT PAGE / রেজিস্ট্রেশন এবং পেমেন্ট পেজ
+   ============================================================ */
+/* ---------- Register page ---------- */
+.register-main {
+  padding: 56px 0 100px;
+  min-height: 75vh;
+  background:
+    radial-gradient(800px 380px at 90% -5%, #e1ecf9, transparent 70%),
+    radial-gradient(600px 300px at 0% 100%, #e6f1e7, transparent 70%), #fafbfd;
+}
+.register-wrap {
+  max-width: 860px;
+}
+.register-heading {
+  animation: owm-rise 0.7s both;
+  margin-bottom: 26px;
+}
+.back-home {
+  white-space: nowrap;
+}
+.back-home .flip {
+  transform: none;
+}
+.stepper {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0 auto 30px;
+  max-width: 520px;
+  animation: owm-rise 0.7s 0.1s both;
+}
+.stepper li {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+.stepper li + li:before {
+  content: "";
+  position: absolute;
+  top: 17px;
+  right: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--line);
+}
+.stepper li.done + li:before,
+.stepper li.current:before {
+  background: var(--sage);
+}
+.stepper-dot {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 2px solid var(--line);
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.35s;
+}
+.stepper li.current {
+  color: var(--green-deep);
+  font-weight: 600;
+}
+.stepper li.current .stepper-dot {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+  box-shadow: 0 0 0 6px #dce8f8;
+}
+.stepper li.done .stepper-dot {
+  background: var(--sage-soft);
+  border-color: var(--sage);
+  color: var(--gold);
+}
+.step-panel {
+  animation: owm-pop 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.registration-form {
+  border-radius: 18px;
+  border-color: var(--line);
+  box-shadow: 0 24px 50px -34px rgba(10, 44, 102, 0.5);
+}
+.registration-form input,
+.registration-form select,
+.registration-form textarea {
+  border-radius: 10px;
+  border: 1.5px solid #d9e2f0;
+  background: #fbfcfe;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+.registration-form input:focus,
+.registration-form select:focus,
+.registration-form textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  background: #fff;
+  box-shadow: 0 0 0 4px #dce8f8;
+}
+.registration-form [role="status"] {
+  background: var(--sage-soft);
+  color: var(--green-deep);
+  border-radius: 8px;
+}
+.form-error {
+  margin: 16px 0 0;
+  padding: 12px;
+  background: #fdecec;
+  color: #a4262c;
+  font-size: 13px;
+  border-radius: 8px;
+  animation: owm-rise 0.3s both;
+}
+.reg-success {
+  margin-bottom: 26px;
+  max-width: 850px;
+  margin-inline: auto;
+}
+.reg-success strong {
+  background: rgba(255, 255, 255, 0.16);
+  padding: 3px 14px;
+  border-radius: 8px;
+  letter-spacing: 0.06em;
+}
+.done-badge {
+  color: #b9e0be;
+  margin-bottom: 6px;
+  animation: owm-pop 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+.pay-note {
+  max-width: 850px;
+  margin: 0 auto 18px;
+  padding: 18px 22px;
+  background: var(--sage-soft);
+  border-left: 4px solid var(--sage);
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--green-deep);
+}
+.pay-note p {
+  margin: 0 0 6px;
+}
+.pay-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 0.04em;
+}
+.pay-heading {
+  margin-bottom: 22px;
+}
+@media (max-width: 760px) {
+  .register-main {
+    padding: 36px 0 70px;
+  }
+  .stepper li {
+    font-size: 10px;
+  }
+  .back-home {
+    padding: 9px 11px;
+    font-size: 11px;
+  }
+}
+
+/* ============================================================
+   22. PHOTO & IMAGE STYLES / ছবি ও ফটো ফ্রেমের ডিজাইন
+   ============================================================ */
+/* ---------- Photos ---------- */
+.photo-frame {
+  margin: 0 0 22px;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  position: relative;
+  box-shadow: 0 22px 44px -28px rgba(10, 44, 102, 0.55);
+  border: 5px solid #fff;
+}
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.9s ease;
+}
+.photo-frame:hover img {
+  transform: scale(1.04);
+}
+.photo-frame figcaption {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  background: rgba(10, 44, 102, 0.78);
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+.exam-photo {
+  max-width: 520px;
+  margin: 30px auto 0;
+}
+.register-photo {
+  max-width: 860px;
+  margin: 0 auto 28px;
+  aspect-ratio: 21/8;
+  animation: owm-pop 0.8s 0.1s both;
+}
+.course-photo {
+  position: relative;
+  display: block;
+  width: 68px;
+  height: 68px;
+  flex: 0 0 auto;
+}
+.course-photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  border: 2px solid #fff;
+  box-shadow: 0 8px 18px -8px rgba(10, 44, 102, 0.5);
+}
+.course-photo .course-icon {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  background: var(--sage-soft);
+}
+.course-photo.detail-photo {
+  margin-bottom: 14px;
+}
+.course-card:hover .course-photo > img {
+  transform: translateY(-2px);
+}
+.course-photo > img {
+  transition: transform 0.3s;
+}
+.importance-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.importance-photo {
+  margin: 0 auto;
+  width: min(230px, 70%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid #fff;
+  box-shadow:
+    0 0 0 2px var(--sage),
+    0 24px 44px -24px rgba(10, 44, 102, 0.6);
+}
+.importance-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 760px) {
+  .importance-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .register-photo {
+    aspect-ratio: 16/9;
+  }
+}
+
+/* ============================================================
+   23. ONE-PAGE NAVIGATION & BACK-TO-TOP / এক পেজের নেভিগেশন ও উপরে ফেরার বাটন
+   ============================================================ */
+/* ---------- One-page: registration section, active nav, back-to-top ---------- */
+.registration-section {
+  background:
+    radial-gradient(800px 380px at 90% -5%, #e1ecf9, transparent 70%),
+    radial-gradient(600px 300px at 0% 100%, #e6f1e7, transparent 70%), #fafbfd;
+}
+.anchor-offset {
+  display: block;
+  height: 0;
+}
+.main-nav > a:not(.nav-cta) {
+  position: relative;
+  padding: 6px 0;
+}
+.main-nav > a:not(.nav-cta):after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--sage);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.main-nav > a.active,
+.main-nav > a:not(.nav-cta):hover {
+  color: var(--green);
+}
+.main-nav > a.active:after,
+.main-nav > a:not(.nav-cta):hover:after {
+  transform: scaleX(1);
+}
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 22px;
+  z-index: 30;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--green), var(--green-deep));
+  color: #fff;
+  box-shadow: 0 12px 26px -10px rgba(10, 44, 102, 0.7);
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+.back-to-top svg {
+  transform: rotate(90deg);
+}
+.back-to-top.show {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  transform: translateY(-3px);
+}
+.footer-links {
+  max-width: 560px;
+  margin-left: auto;
+}
+@media (max-width: 760px) {
+  .main-nav > a:not(.nav-cta):after {
+    display: none;
+  }
+  .back-to-top {
+    right: 14px;
+    bottom: 16px;
+  }
+}
+
+/* ---------- Full navbar: sob link ekta strip-e ---------- */
+.site-header {
+  height: auto;
+}
+.header-inner {
+  height: 84px;
+}
+
+/* ============================================================
+   24. HEADER ACTIONS & DESKTOP/MOBILE MENU BEHAVIOR / হেডারের বাটন ও মেনুর আচরণ
+   ============================================================ */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+@media (min-width: 761px) {
+  .main-nav {
+    display: flex;
+    position: static;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-top: 1px solid var(--line);
+    padding: 0 20px;
+    background: #ffffff;
+    box-shadow: none;
+    scrollbar-width: none;
+  }
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .main-nav > a:first-child {
+    margin-left: auto;
+  }
+  .main-nav > a:nth-last-child(2) {
+    margin-right: auto;
+  }
+  .main-nav > a:not(.nav-cta) {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+  .main-nav > a:not(.nav-cta):after {
+    left: 10px;
+    right: 10px;
+    bottom: 5px;
+  }
+  .menu-cta {
+    display: none;
+  }
+  html {
+    scroll-padding-top: 140px;
+  }
+}
+@media (max-width: 760px) {
+  .header-cta {
+    display: none;
+  }
+  .header-actions {
+    gap: 0;
+  }
+  .main-nav {
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+  }
+}
+
+/* =========================================================
+   Additional Interactive Animations & Registration Page
+   ========================================================= */
+
+/* Header CTA Pulse & Button Animations */
+.header-cta {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(10, 74, 160, 0.3);
+  animation: owm-cta-pulse 3s infinite ease-in-out;
+}
+@keyframes owm-cta-pulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 14px rgba(10, 74, 160, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 6px 22px rgba(10, 74, 160, 0.55),
+      0 0 0 5px rgba(111, 163, 118, 0.2);
+  }
+}
+.header-cta:hover,
+.menu-cta:hover,
+.hero-enroll-btn:hover,
+.fee-enroll-btn:hover,
+.contact-enroll-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+.header-cta svg,
+.menu-cta svg,
+.button svg,
+.course-link svg,
+.course-enroll-btn svg {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.header-cta:hover svg,
+.menu-cta:hover svg,
+.button:hover svg,
+.hero-enroll-btn:hover svg,
+.fee-enroll-btn:hover svg,
+.contact-enroll-btn:hover svg {
+  transform: translateX(-4px);
+}
+.course-card:hover .course-enroll-btn svg {
+  transform: translateX(-3px);
+}
+
+/* Course Card Action Buttons */
+.course-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+.course-enroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--green), var(--green-deep));
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(10, 74, 160, 0.2);
+}
+.course-enroll-btn:hover {
+  background: linear-gradient(135deg, #0d58bd, var(--green));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 74, 160, 0.35);
+}
+
+/* FAQ Smooth Accordion */
+.faq-item button {
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.faq-item button:hover {
+  color: var(--gold);
+}
+.faq-answer {
+  animation: owm-faq-slide 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes owm-faq-slide {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   25. DEDICATED REGISTRATION PAGE / আলাদা রেজিস্ট্রেশন পেজ
+   ============================================================ */
+/* Registration Page Styling */
+.registration-page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.reg-header {
+  border-bottom: 1px solid var(--line);
+  background: #ffffff !important;
+}
+.reg-header .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.reg-header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.back-home-btn {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--green-deep);
+  line-height: 1;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(10, 44, 102, 0.05);
+}
+.back-home-btn:hover {
+  background: var(--cream);
+  border-color: var(--sage);
+  color: var(--green);
+  transform: translateY(-1px);
+}
+.back-home-btn:active {
+  transform: translateY(0);
+}
+.back-home-text {
+  display: inline;
+}
+.back-home-short {
+  display: none;
+}
+
+/* Responsive Breakpoints for Registration Header */
+@media (max-width: 640px) {
+  .reg-header {
+    height: 68px;
+  }
+  .reg-header .header-inner {
+    height: 100%;
+    gap: 8px;
+    padding: 0 14px;
+  }
+  .reg-header .brand-copy small {
+    display: none;
+  }
+  .reg-header .brand-copy strong {
+    font-size: 13.5px;
+  }
+  .reg-header .brand-logo {
+    width: 36px;
+    height: 36px;
+  }
+  .reg-header .header-actions {
+    gap: 8px;
+  }
+  .back-home-btn {
+    font-size: 12px;
+    padding: 7px 11px;
+    height: 34px;
+    gap: 5px;
+  }
+  .back-home-text {
+    display: none;
+  }
+  .back-home-short {
+    display: inline;
+  }
+  .reg-header .language-switch {
+    border-radius: 6px;
+  }
+  .reg-header .language-switch button {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 400px) {
+  .reg-header .brand-copy strong {
+    font-size: 12px;
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .back-home-short {
+    display: none;
+  }
+  .back-home-btn {
+    padding: 7px 9px;
+  }
+  .reg-header .language-switch button {
+    padding: 5px 6px;
+    font-size: 10.5px;
+  }
+}
+.register-main-page {
+  flex: 1;
+  background:
+    radial-gradient(850px 400px at 90% -5%, #e1ecf9, transparent 70%),
+    radial-gradient(650px 320px at 0% 100%, #e6f1e7, transparent 70%), #fafbfd;
+}
+
+/* ============================================================
+   26. REGISTRATION PAGE HERO & HIGHLIGHTS / রেজিস্ট্রেশন পেজের ব্যানার ও সুবিধা
+   ============================================================ */
+.reg-hero-banner {
+  padding: 45px 0 20px;
+  text-align: center;
+}
+.reg-hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.reg-breadcrumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.breadcrumb-link {
+  color: var(--green);
+  transition: color 0.2s;
+}
+.breadcrumb-link:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+.breadcrumb-sep {
+  opacity: 0.5;
+}
+.breadcrumb-current {
+  color: var(--green-deep);
+  font-weight: 600;
+}
+.reg-badge-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e6f1e7;
+  color: var(--gold);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border: 1px solid rgba(111, 163, 118, 0.3);
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse-ring 2s infinite ease-out;
+}
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(79, 143, 87, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(79, 143, 87, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 143, 87, 0);
+  }
+}
+.reg-title {
+  font-family: "Noto Serif Bengali", serif;
+  font-size: clamp(32px, 4.5vw, 48px);
+  color: var(--green-deep);
+  margin: 0 0 14px;
+  font-weight: 700;
+}
+.reg-title em {
+  font-style: normal;
+  color: var(--gold);
+}
+.reg-subtitle {
+  max-width: 620px;
+  margin: 0 auto 28px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #5170a7;
+}
+.reg-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 16px rgba(10, 44, 102, 0.05);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-deep);
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.highlight-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(10, 44, 102, 0.08);
+}
+.pill-icon {
+  color: var(--gold);
+}
+
+/* ============================================================
+   27. REGISTRATION HELP CARDS / রেজিস্ট্রেশন সহায়তা কার্ড
+   ============================================================ */
+.reg-help-section {
+  padding: 30px 0 70px;
+}
+.reg-help-card {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+  background: #ffffff;
+  padding: 40px 24px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 36px rgba(10, 44, 102, 0.06);
+}
+.help-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--sage-soft);
+  color: var(--gold);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  animation: owm-float 4s ease-in-out infinite;
+}
+.reg-help-card h3 {
+  font-family: "Noto Serif Bengali", serif;
+  font-size: 22px;
+  color: var(--green-deep);
+  margin-bottom: 10px;
+}
+.reg-help-card p {
+  max-width: 580px;
+  margin: 0 auto 24px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #5170a7;
+}
+.help-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.help-whatsapp-btn {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+}
+.help-whatsapp-btn:hover {
+  background: linear-gradient(135deg, #20bd5a, #0e6f64);
+}
+
+/* Card & Interactive Hover Animations */
+.course-card {
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease;
+}
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 42px -12px rgba(10, 44, 102, 0.16),
+    0 0 0 1px rgba(111, 163, 118, 0.3);
+}
+.benefit-item {
+  padding: 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.benefit-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 26px -8px rgba(0, 0, 0, 0.25);
+}
+.benefit-item:hover .benefit-icon {
+  transform: scale(1.15) rotate(6deg);
+  background: var(--gold);
+  color: #ffffff;
+}
+.benefit-icon {
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.3s ease,
+    color 0.3s ease;
+}
+.step {
+  transition: transform 0.3s ease;
+}
+.step:hover {
+  transform: translateY(-4px);
+}
+.step:hover > span {
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green);
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(10, 74, 160, 0.25);
+}
+.step > span {
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* =========================================================
+   Modern Contact Section & Top Contacts Styling
+   ========================================================= */
+
+/* Top Strip Contacts */
+
+/* ============================================================
+   28. TOP BAR CONTACT LINKS / উপরের বারে যোগাযোগের লিংক
+   ============================================================ */
+.top-strip-contacts {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.top-strip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #d2dfef;
+  font-size: 12px;
+  transition: color 0.2s ease;
+}
+.top-strip-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.top-strip-sep {
+  opacity: 0.5;
+  color: #9ab4d6;
+}
+
+/* Contact Section & Grid */
+.contact-section {
+  background: radial-gradient(900px 450px at 50% 0%, #edf3fc, transparent 75%), #fafbfd;
+  padding: 85px 0 95px;
+}
+.contact-heading {
+  margin-bottom: 45px;
+}
+
+/* ============================================================
+   29. MODERN CONTACT CARDS / আধুনিক যোগাযোগ কার্ড
+   ============================================================ */
+.contact-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 45px;
+}
+.contact-item-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px 20px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 28px -10px rgba(10, 44, 102, 0.07);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease;
+}
+.contact-item-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -12px rgba(10, 44, 102, 0.16);
+  border-color: rgba(111, 163, 118, 0.4);
+}
+.contact-item-card.featured {
+  border-color: rgba(37, 211, 102, 0.4);
+  background: linear-gradient(180deg, #ffffff 0%, #f4fbf5 100%);
+  box-shadow: 0 12px 30px -10px rgba(37, 211, 102, 0.15);
+}
+.contact-card-badge {
+  position: absolute;
+  top: -11px;
+  background: #25d366;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+  letter-spacing: 0.3px;
+}
+.contact-icon-bubble {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contact-item-card:hover .contact-icon-bubble {
+  transform: scale(1.12) rotate(4deg);
+}
+.contact-icon-bubble.phone {
+  background: #e6f1e7;
+  color: #2e7d32;
+}
+.contact-icon-bubble.whatsapp {
+  background: #e8f8ed;
+  color: #25d366;
+}
+.contact-icon-bubble.email {
+  background: #e6eef9;
+  color: #0a4aa0;
+}
+.contact-icon-bubble.admission {
+  background: #fff6e5;
+  color: #c67c00;
+}
+.contact-item-card h3 {
+  font-family: "Noto Serif Bengali", serif;
+  font-size: 18px;
+  color: var(--green-deep);
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+.contact-card-sub {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+.contact-card-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+.contact-card-val.email-val {
+  font-size: 13px;
+  word-break: break-all;
+}
+.contact-card-time {
+  font-size: 11px;
+  color: #7b889e;
+  margin-bottom: 18px;
+}
+.contact-action-btn {
+  margin-top: auto;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+.contact-action-btn.phone {
+  background: #eef7ee;
+  color: #2e7d32;
+  border: 1px solid #cce5cd;
+}
+.contact-action-btn.phone:hover {
+  background: #2e7d32;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.25);
+}
+.contact-action-btn.whatsapp {
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.25);
+}
+.contact-action-btn.whatsapp:hover {
+  background: #1ebc57;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.4);
+}
+.contact-action-btn.email {
+  background: #eaf1fa;
+  color: #0a4aa0;
+  border: 1px solid #c9dcf4;
+}
+.contact-action-btn.email:hover {
+  background: #0a4aa0;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 74, 160, 0.25);
+}
+.contact-action-btn.admission {
+  background: linear-gradient(135deg, var(--green), var(--green-deep));
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(10, 74, 160, 0.25);
+}
+.contact-action-btn.admission:hover {
+  background: linear-gradient(135deg, #0d58bd, var(--green));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(10, 74, 160, 0.35);
+}
+
+/* Contact Banner Card */
+.contact-banner-card {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 56px 30px;
+  background: linear-gradient(155deg, #0a2554 0%, #0a4aa0 100%);
+  border-radius: 24px;
+  color: #ffffff;
+  box-shadow: 0 24px 50px -15px rgba(10, 44, 102, 0.3);
+}
+.contact-banner-card:before,
+.contact-banner-card:after {
+  content: "✧";
+  position: absolute;
+  color: #ffffff;
+  font-size: 130px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.contact-banner-card:before {
+  left: 5%;
+  top: -20px;
+  animation: owm-float 6s ease-in-out infinite;
+}
+.contact-banner-card:after {
+  right: 5%;
+  bottom: -40px;
+  animation: owm-float 6s ease-in-out 3s infinite;
+}
+.contact-banner-card h2 {
+  font-family: "Noto Serif Bengali", serif;
+  font-size: clamp(28px, 4vw, 40px);
+  color: #ffffff;
+  margin: 12px 0;
+  line-height: 1.45;
+}
+.contact-banner-card h2 em {
+  font-style: normal;
+  color: #b9e0be;
+}
+.contact-banner-card > p {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: #dbe7f7;
+}
+
+/* Footer Direct Contacts */
+
+/* ============================================================
+   30. FOOTER CONTACT DETAILS / ফুটারের পরিচিতি ও যোগাযোগ তথ্য
+   ============================================================ */
+.footer-intro-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-direct-contacts {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.footer-contact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #dbe7f7;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  transition: all 0.25s ease;
+}
+.footer-contact-badge:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Responsive queries */
+@media (max-width: 1000px) {
+  .contact-grid-modern {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .contact-grid-modern {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .top-strip-contacts {
+    display: none;
+  }
+  .contact-banner-card {
+    padding: 38px 18px;
+  }
+}
+
+/* =========================================================
+   Navigation & Footer Icons Styling
+   ========================================================= */
+.main-nav > a:not(.nav-cta) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-icon {
+  opacity: 0.8;
+  flex-shrink: 0;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    color 0.25s ease;
+}
+.main-nav > a:hover .nav-icon,
+.main-nav > a.active .nav-icon {
+  opacity: 1;
+  color: var(--green);
+  transform: translateY(-1px) scale(1.1);
+}
+.main-nav.is-open > a:not(.nav-cta) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+.main-nav.is-open .nav-icon {
+  width: 17px;
+  height: 17px;
+  color: var(--green);
+  opacity: 0.9;
+}
+
+/* Footer Nav Links with Icons */
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 14px 18px;
+  flex-wrap: wrap;
+}
+.footer-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #b9c3d5;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+  text-decoration: none;
+}
+.footer-icon {
+  opacity: 0.75;
+  flex-shrink: 0;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+.footer-nav-link:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.footer-nav-link:hover .footer-icon {
+  opacity: 1;
+  transform: scale(1.15);
+}
+.footer-social-whatsapp:hover {
+  color: #25d366 !important;
+}
+.footer-social-whatsapp:hover .footer-icon {
+  color: #25d366;
+}
+.footer-social-facebook:hover {
+  color: #4292f7 !important;
+}
+.footer-social-facebook:hover .footer-icon {
+  color: #4292f7;
+}
+.footer-social-phone:hover {
+  color: #69f0ae !important;
+}
+.footer-social-phone:hover .footer-icon {
+  color: #69f0ae;
+}
+.footer-social-email:hover {
+  color: #ffca28 !important;
+}
+.footer-social-email:hover .footer-icon {
+  color: #ffca28;
+}
+
+/* =========================================================
+   Redesigned Registration Form (Exact Match to Mockup)
+   ========================================================= */
+
+/* ============================================================
+   31. REDESIGNED REGISTRATION FORM / নতুন ডিজাইনের রেজিস্ট্রেশন ফর্ম
+   ============================================================ */
+.rf-stepper {
+  max-width: 680px;
+  margin: 0 auto 28px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+}
+.rf-stepper li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  padding: 8px 16px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  transition: all 0.25s ease;
+}
+.rf-stepper li.current {
+  background: #dcf2e3;
+  color: #064e3b;
+  border-color: #86efac;
+  box-shadow: 0 2px 8px rgba(6, 78, 59, 0.08);
+}
+.rf-stepper li.done {
+  background: #f1f5f9;
+  color: #064e3b;
+  border-color: #cbd5e1;
+}
+.rf-stepper .stepper-dot {
+  font-family: monospace, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Main Card */
+.rf-card {
+  max-width: 680px;
+  margin: 0 auto 30px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 34px 38px 38px;
+  box-shadow:
+    0 4px 20px -2px rgba(0, 0, 0, 0.04),
+    0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  text-align: left;
+}
+
+/* Card Header */
+.rf-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.rf-badge {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 6px;
+  background-color: #dcf2e3;
+  color: #064e3b;
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace, sans-serif;
+  letter-spacing: -0.5px;
+}
+.rf-badge-done {
+  margin: 0 auto 16px;
+  background: #dcf2e3;
+}
+.rf-header-text {
+  display: flex;
+  flex-direction: column;
+}
+.rf-title {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Bengali", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 3px;
+  line-height: 1.25;
+}
+.rf-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Divider */
+.rf-divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 20px 0 24px;
+}
+
+/* 2-Column Responsive Grid */
+.rf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 22px;
+}
+.rf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rf-field-full {
+  grid-column: 1 / -1;
+}
+.rf-field label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0f172a;
+  letter-spacing: -0.1px;
+}
+.rf-field input,
+.rf-field select {
+  width: 100%;
+  height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-size: 14px;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  box-sizing: border-box;
+}
+.rf-field input::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+.rf-field input:focus,
+.rf-field select:focus {
+  outline: none;
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+
+/* Select Styling with Custom SVG Chevron */
+.rf-select-wrap {
+  position: relative;
+  width: 100%;
+}
+.rf-select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 36px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230f172a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+}
+
+/* Demo Note Text */
+.rf-demo-note {
+  font-size: 12.5px;
+  color: #64748b;
+  margin: 18px 0 20px;
+  line-height: 1.5;
+}
+
+/* Full Width Submit Button */
+.rf-submit-btn {
+  width: 100%;
+  height: 50px;
+  background-color: #064e3b;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  box-shadow: 0 2px 4px rgba(6, 78, 59, 0.15);
+}
+.rf-submit-btn:hover {
+  background-color: #04382a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(6, 78, 59, 0.22);
+}
+.rf-submit-btn:active {
+  transform: translateY(0);
+}
+.rf-submit-btn:disabled {
+  background-color: #064e3b;
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+.rf-error {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+/* Step 2 Payment Summary Card */
+.rf-pay-summary {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 18px;
+}
+.rf-pay-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.rf-pay-item-wide {
+  grid-column: 1 / -1;
+  padding-top: 10px;
+  border-top: 1px dashed #bbf7d0;
+}
+.rf-pay-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #166534;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.rf-pay-val-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.rf-code-val {
+  font-family: monospace, sans-serif;
+  font-size: 16px;
+  color: #064e3b;
+  font-weight: 700;
+  background: #ffffff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #86efac;
+}
+.rf-fee-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: #064e3b;
+}
+.rf-phone-val {
+  font-family: monospace, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #064e3b;
+  background: #ffffff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #86efac;
+}
+.rf-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #ffffff;
+  color: #064e3b;
+  border: 1px solid #86efac;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.rf-copy-btn:hover {
+  background: #064e3b;
+  color: #ffffff;
+}
+.rf-pay-hint {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Step 3 Done Card */
+.rf-done-card {
+  text-align: center;
+  padding: 40px 30px;
+}
+.rf-done-icon-wrap {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #dcf2e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rf-done-icon {
+  color: #064e3b;
+}
+.rf-done-title {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Bengali", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+.rf-done-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+.rf-done-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px 20px;
+  max-width: 440px;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rf-done-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #334155;
+}
+.rf-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fef9c3;
+  color: #854d0e;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #fde047;
+}
+.rf-done-info {
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto 28px;
+}
+.rf-done-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.rf-home-btn {
+  background-color: #064e3b;
+  color: #ffffff;
+}
+.rf-home-btn:hover {
+  background-color: #04382a;
+}
+.rf-reset-btn {
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .rf-card {
+    padding: 24px 18px 28px;
+    border-radius: 10px;
+  }
+  .rf-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .rf-pay-summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .rf-stepper {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .rf-stepper li {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/* =========================================================
+   Hide-on-Scroll-Down / Show-on-Scroll-Up Navbar Animation
+   ========================================================= */
+
+/* Navigation Menu bar (.main-nav) stays visible all the time;
+   Only top bar (.header-inner: logo & enroll button) slides up and hides on scroll down */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(23, 43, 78, 0.08);
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.header-inner {
+  height: 84px;
+}
+
+@media (max-width: 760px) {
+  .header-inner {
+    height: 72px;
+  }
+}
+
+/* On scroll down: top part slides up and hides, .main-nav stays pinned at top without any page shift */
+@media (min-width: 761px) {
+  .site-header.topbar-hidden {
+    transform: translateY(-84px);
+    box-shadow: 0 4px 18px rgba(10, 44, 102, 0.08);
+  }
+  .site-header.topbar-hidden .main-nav {
+    border-top-color: rgba(23, 43, 78, 0.08);
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header.topbar-hidden {
+    transform: translateY(-72px);
+    box-shadow: 0 4px 18px rgba(10, 44, 102, 0.08);
+  }
+}
+
+.site-header.header-scrolled {
+  background: #ffffff !important;
+  box-shadow: 0 4px 20px -4px rgba(10, 44, 102, 0.12);
+  border-bottom-color: rgba(23, 43, 78, 0.08);
+}
+
+/* ============================================================
+   33. FACEBOOK & HELP BUTTONS / ফেসবুক ও সহায়তা বাটন
+   ============================================================ */
+/* Top Strip Facebook link & Help Card Facebook Button */
+.top-strip-fb {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+.top-strip-fb:hover {
+  color: #1877f2 !important;
+  transform: translateY(-1px);
+}
+.help-facebook-btn {
+  border-color: #1877f2 !important;
+  color: #1877f2 !important;
+  transition: all 0.25s ease;
+}
+.help-facebook-btn:hover {
+  background: #1877f2 !important;
+  border-color: #1877f2 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.3);
+}
+
+/* =========================================================
+   Additional Interactive Animations
+   ========================================================= */
+
+/* Button Shimmer Effect on CTA Buttons */
+.button-primary,
+.nav-cta,
+.rf-submit-btn {
+  position: relative;
+  overflow: hidden;
+}
+.button-primary::after,
+.nav-cta::after,
+.rf-submit-btn::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: none;
+}
+.button-primary:hover::after,
+.nav-cta:hover::after,
+.rf-submit-btn:hover::after {
+  animation: owm-btn-shimmer 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes owm-btn-shimmer {
+  0% {
+    left: -60%;
+  }
+  100% {
+    left: 140%;
+  }
+}
+
+/* Micro-interaction: Arrow & Icon Motion */
+.rf-submit-btn svg,
+.button-primary svg,
+.nav-cta svg {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rf-submit-btn:hover svg {
+  transform: translateX(4px);
+}
+.header-cta:hover svg:last-child {
+  transform: translateX(-4px);
+}
+
+/* Card Glow and Hover Elevation */
+.course-card,
+.teacher-card,
+.contact-item-card,
+.rf-card {
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease;
+}
+.course-card:hover {
+  transform: translateY(-7px);
+  box-shadow:
+    0 20px 38px -12px rgba(10, 44, 102, 0.14),
+    0 0 0 1.5px rgba(13, 88, 189, 0.3);
+}
+.rf-card:hover {
+  box-shadow:
+    0 12px 30px -4px rgba(10, 44, 102, 0.08),
+    0 4px 10px -2px rgba(10, 44, 102, 0.03);
+}
+
+/* Floating animation for Badges & Icons */
+.reg-badge-kicker,
+.hero-photo-wrap,
+.rf-badge {
+  animation: owm-badge-float 4.5s ease-in-out infinite;
+}
+@keyframes owm-badge-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Enhanced Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Interactive Floating WhatsApp Button Pulse */
+.float-wa {
+  animation: owm-wa-bounce 3.5s ease-in-out infinite;
+}
+@keyframes owm-wa-bounce {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow:
+      0 6px 20px rgba(37, 211, 102, 0.6),
+      0 0 0 6px rgba(37, 211, 102, 0.15);
+  }
+}
