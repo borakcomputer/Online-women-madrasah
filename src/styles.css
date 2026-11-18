@@ -2116,7 +2116,7 @@ p {
     display: none;
   }
   html {
-    scroll-padding-top: 140px;
+    scroll-padding-top: 70px;
   }
 }
 @media (max-width: 760px) {
@@ -2864,7 +2864,7 @@ p {
   transition: all 0.25s ease;
 }
 .footer-contact-badge:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(151, 205, 2, 0.18);
   color: #ffffff;
   transform: translateY(-2px);
 }
@@ -2981,6 +2981,127 @@ p {
 .footer-social-email:hover .footer-icon {
   color: #ffca28;
 }
+
+/* =====================================
+   PREMIUM ISLAMIC FOOTER DESIGN
+===================================== */
+
+footer {
+  background: linear-gradient(135deg, #102d27, #173e32);
+  color: #f5ead3;
+  padding: 55px 0 20px;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.4fr;
+  gap: 35px;
+  align-items: start;
+}
+
+.footer-brand {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.footer-brand .brand-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.footer-brand strong {
+  display: block;
+  color: #f5dfad;
+  font-size: 19px;
+}
+
+.footer-brand small {
+  color: #d3c19c;
+}
+
+.footer-intro-block p {
+  color: #d5ded8;
+  line-height: 1.9;
+  font-size: 14px;
+  margin: 18px 0;
+}
+
+.footer-direct-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-contact-badge {
+  color: #e8d5ad;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.footer-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #e1e8e2;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 9px;
+  border-radius: 8px;
+  transition: 0.25s ease;
+}
+
+.footer-nav-link:hover {
+  background: rgba(255,255,255,0.09);
+  color: #f4d38b;
+  transform: translateX(3px);
+}
+
+.footer-icon {
+  color: #e6c47e;
+  flex-shrink: 0;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin-top: 35px;
+  padding-top: 20px;
+  text-align: center;
+  color: #d5ded8;
+  font-size: 13px;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .footer-nav-link {
+    font-size: 12px;
+    padding: 8px 5px;
+  }
+
+  .footer-bottom {
+    margin-top: 25px;
+  }
+}
+
 
 /* =========================================================
    Redesigned Registration Form (Exact Match to Mockup)
@@ -3408,44 +3529,59 @@ p {
    ========================================================= */
 
 /* Navigation Menu bar (.main-nav) stays visible all the time;
-   Only top bar (.header-inner: logo & enroll button) slides up and hides on scroll down */
+   Only top bar (.site-header-top: logo & enroll button) slides up and hides on scroll down */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
   background: #ffffff !important;
   border-bottom: 1px solid rgba(23, 43, 78, 0.08);
+  transition: box-shadow 0.25s ease;
+}
+
+.site-header-top {
+  height: 84px;
+  max-height: 84px;
+  overflow: hidden;
+  background: #ffffff;
   transition:
-    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.25s ease;
-  will-change: transform;
+    max-height 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.22s ease,
+    transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .header-inner {
   height: 84px;
-}
-
-@media (max-width: 760px) {
-  .header-inner {
-    height: 72px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* On scroll down: top part slides up and hides, .main-nav stays pinned at top without any page shift */
 @media (min-width: 761px) {
-  .site-header.topbar-hidden {
-    transform: translateY(-84px);
-    box-shadow: 0 4px 18px rgba(10, 44, 102, 0.08);
+  .site-header-top.topbar-hidden {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
   }
-  .site-header.topbar-hidden .main-nav {
-    border-top-color: rgba(23, 43, 78, 0.08);
+  .site-header.has-topbar-hidden .main-nav {
+    border-top-color: transparent;
   }
 }
 
 @media (max-width: 760px) {
-  .site-header.topbar-hidden {
-    transform: translateY(-72px);
-    box-shadow: 0 4px 18px rgba(10, 44, 102, 0.08);
+  .site-header-top {
+    height: 72px;
+    max-height: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+  .header-inner {
+    height: 72px;
   }
 }
 

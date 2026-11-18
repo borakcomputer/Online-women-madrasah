@@ -1,5 +1,5 @@
 // =====================================================================
-// নূর অনলাইন মহিলা মাদরাসা — Home page ("/" route)
+// অনলাইন মহিলা মাদরাসা — Home page ("/" route)
 // =====================================================================
 
 // ---------- Imports: Router / React / Utilities ----------
@@ -15,6 +15,7 @@ import {
   BookOpen,
   CheckCircle2,
   ChevronDown,
+  ChevronRight,
   Clock3,
   CreditCard,
   Facebook,
@@ -50,7 +51,9 @@ import thumbNotebook from "../assets/photos/thumb-notebook.jpg";
 import thumbTajweed from "../assets/photos/thumb-tajweed.jpg";
 import thumbPrayerRoom from "../assets/photos/thumb-prayer-room.jpg";
 import thumbRehal from "../assets/photos/thumb-rehal.jpg";
-import thumbParenting from "../assets/photos/thumb-parenting.jpg";
+import thumbParenting from "../assets/photos/thumb-parenting.jpg"; 
+import dailyRoutine from "../assets/photos/daily-routine.jpg";
+import weeklyExam from "../assets/photos/weekly-exam.jpg";
 
 // =====================================================================
 // Route definition — page title ও SEO/OpenGraph meta tag
@@ -58,13 +61,13 @@ import thumbParenting from "../assets/photos/thumb-parenting.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "নূর অনলাইন মহিলা মাদরাসা | ঘরে বসে কুরআন শিক্ষা" },
+      { title: " অনলাইন মহিলা মাদরাসা | ঘরে বসে কুরআন শিক্ষা" },
       {
         name: "description",
         content:
           "নারীদের জন্য অনলাইন কুরআন, তাজবিদ ও ইসলামী শিক্ষার যত্নশীল আয়োজন। নিজের সুবিধামতো সময়ে ঘরে বসেই শিখুন।",
       },
-      { property: "og:title", content: "নূর অনলাইন মহিলা মাদরাসা" },
+      { property: "og:title", content: " অনলাইন মহিলা মাদরাসা" },
       {
         property: "og:description",
         content: "ঘরে বসে শিখুন পবিত্র কুরআন ও প্রয়োজনীয় ইসলামী জ্ঞান।",
@@ -123,10 +126,10 @@ const benefits = [
     text: "শিক্ষিকার সঙ্গে লাইভ ক্লাসে পড়া ও অনুশীলনের সুযোগ।",
   },
   {
-    icon: Clock3,
-    title: "সুবিধামতো সময়",
-    text: "আপনার সময়ের সঙ্গে মিলিয়ে ক্লাসের সময় নির্ধারণের ব্যবস্থা।",
-  },
+  icon: Clock3,
+  title: "দুইটি সময়ের মধ্যে পছন্দের সময় নির্বাচন",
+  text: "যেকোনো একটি বেছে নেওয়ার সুবিধা—দুপুর ৩টা থেকে ৪টা অথবা রাত ৯টা থেকে ১০টা।",
+},
   {
     icon: Users,
     title: "নারীদের জন্য",
@@ -253,8 +256,8 @@ function Index() {
   useEffect(() => {
     document.title =
       language === "bn"
-        ? "নূর অনলাইন মহিলা মাদরাসা | ঘরে বসে কুরআন শিক্ষা"
-        : "Noor Online Women's Madrasa | Quran Learning from Home";
+        ? "অনলাইন মহিলা মাদরাসা | ঘরে বসে কুরআন শিক্ষা"
+        : "Online Women's Madrasa | Quran Learning from Home";
   }, [language]);
 
   // ---------- Effect 2: scroll-spy (কোন section দেখা যাচ্ছে) + "উপরে যান" বাটন ----------
@@ -287,45 +290,54 @@ function Index() {
     // স্ক্রল ট্র্যাকিং: back-to-top বাটন এবং নিচে স্ক্রল করলে শুধু ওপরের বার সরানো / উপরে উঠলে দেখানো
     let lastScrollY = window.scrollY;
     let accumulatedDelta = 0;
+    let ticking = false;
 
     const onScroll = () => {
-      const currentScrollY = window.scrollY;
-      setShowTop(currentScrollY > 700);
-      setHeaderScrolled(currentScrollY > 30);
+      if (ticking) return;
+      ticking = true;
 
-      if (menuOpen) {
-        setTopBarHidden(false);
-        lastScrollY = currentScrollY;
-        return;
-      }
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        setShowTop(currentScrollY > 700);
+        setHeaderScrolled(currentScrollY > 25);
 
-      // পৃষ্ঠার ওপরের অংশে (১৫০px পর্যন্ত) সব সময় সম্পূর্ণ হেডার স্থির থাকবে এবং Home সক্রিয় থাকবে
-      if (currentScrollY <= 150) {
-        setActiveId("home");
-        setTopBarHidden(false);
-        accumulatedDelta = 0;
-        lastScrollY = currentScrollY;
-        return;
-      }
+        if (menuOpen) {
+          setTopBarHidden(false);
+          lastScrollY = currentScrollY;
+          ticking = false;
+          return;
+        }
 
-      const diff = currentScrollY - lastScrollY;
+        // পৃষ্ঠার ওপরের অংশে (১৬০px পর্যন্ত) সব সময় সম্পূর্ণ হেডার স্থির থাকবে এবং Home সক্রিয় থাকবে
+        if (currentScrollY <= 160) {
+          setActiveId("home");
+          setTopBarHidden(false);
+          accumulatedDelta = 0;
+          lastScrollY = currentScrollY;
+          ticking = false;
+          return;
+        }
 
-      // স্ক্রলের দিক পরিবর্তন হলে ডেল্টা রিসেট
-      if ((diff > 0 && accumulatedDelta < 0) || (diff < 0 && accumulatedDelta > 0)) {
-        accumulatedDelta = 0;
-      }
-      accumulatedDelta += diff;
+        const diff = currentScrollY - lastScrollY;
 
-      // নিচে স্ক্রল করলে (২৫px এর বেশি হলে) ওপরের বার হাইড হবে, কিন্তু নেভবার স্থির থাকবে
-      if (accumulatedDelta > 25) {
-        setTopBarHidden(true);
-      }
-      // উপরে স্ক্রল করলে (২০px এর বেশি হলে) ওপরের বার মসৃণভাবে ফিরে আসবে
-      else if (accumulatedDelta < -20) {
-        setTopBarHidden(false);
-      }
+        // স্ক্রলের দিক পরিবর্তন হলে ডেল্টা রিসেট
+        if ((diff > 0 && accumulatedDelta < 0) || (diff < 0 && accumulatedDelta > 0)) {
+          accumulatedDelta = 0;
+        }
+        accumulatedDelta += diff;
 
-      lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+        // নিচে স্ক্রল করলে (৫০px এর বেশি হলে) শুধু ওপরের বার উপরে উঠবে
+        if (accumulatedDelta > 50) {
+          setTopBarHidden(true);
+        }
+        // উপরে স্ক্রল করলে (৪৫px এর বেশি হলে) ওপরের বার মসৃণভাবে ফিরে আসবে
+        else if (accumulatedDelta < -45) {
+          setTopBarHidden(false);
+        }
+
+        lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+        ticking = false;
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -374,74 +386,84 @@ function Index() {
       <header
         className={`site-header ${topBarHidden ? "topbar-hidden" : ""} ${headerScrolled ? "header-scrolled" : ""}`}
       >
-        <div className="container header-inner">
-          {/* লোগো ও প্রতিষ্ঠানের নাম */}
-          <a
-            className="brand"
-            href="#home"
-            onClick={closeMenu}
-            aria-label={
-              language === "bn" ? " অনলাইন মহিলা মাদরাসা হোম" : " Online Women's Madrasa home"
-            }
-          >
-            <img
-              className="brand-logo"
-              src={logoImage}
-              alt={language === "bn" ? "অনলাইন মহিলা মাদরাসার লোগো" : "Online Women's Madrasa logo"}
-            />
-            <span className="brand-copy">
-              <strong>অনলাইন মহিলা মাদরাসা</strong>
-              <small>আলোর পথে ইলমের যাত্রা</small>
-            </span>
-          </a>
-
-          {/* ভর্তি বাটন + ভাষা পরিবর্তন (বাংলা / English) */}
-          <div className="header-actions">
-            <Link to="/registration" className="nav-cta header-cta">
-              <UserPlus size={16} /> ভর্তি হোন <ArrowLeft size={16} />
-            </Link>
-            <div
-              className="language-switch"
-              role="group"
-              aria-label={language === "bn" ? "ভাষা নির্বাচন" : "Select language"}
+        <div className="site-header-top">
+          <div className="container header-inner">
+            {/* লোগো ও প্রতিষ্ঠানের নাম */}
+            <a
+              className="brand"
+              href="#home"
+              onClick={closeMenu}
+              aria-label={
+                language === "bn" ? "অনলাইন মহিলা মাদরাসা হোম" : "Online Women's Madrasa home"
+              }
             >
-              <button
-                type="button"
-                className={language === "bn" ? "active" : ""}
-                aria-pressed={language === "bn"}
-                onClick={() => setLanguage("bn")}
-              >
-                বাংলা
-              </button>
-              <button
-                type="button"
-                className={language === "en" ? "active" : ""}
-                aria-pressed={language === "en"}
-                onClick={() => setLanguage("en")}
-              >
-                English
-              </button>
-            </div>
-          </div>
+              <img
+                className="brand-logo"
+                src={logoImage}
+                alt={
+                  language === "bn" ? "অনলাইন মহিলা মাদরাসার লোগো" : "Online Women's Madrasa logo"
+                }
+              />
+              <span className="brand-copy">
+                <strong>অনলাইন মহিলা মাদরাসা</strong>
+                <small>আলোর পথে ইলমের যাত্রা</small>
+              </span>
+            </a>
 
-          {/* মোবাইল হ্যামবার্গার মেনু বাটন */}
-          <button
-            className="mobile-menu"
-            type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={
-              menuOpen
-                ? language === "bn"
-                  ? "মেনু বন্ধ করুন"
-                  : "Close menu"
-                : language === "bn"
-                  ? "মেনু খুলুন"
-                  : "Open menu"
-            }
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X /> : <Menu />}
-          </button>
+            {/* ভর্তি বাটন + ভাষা পরিবর্তন (বাংলা / English) */}
+            <div className="header-actions">
+              <Link to="/registration" className="nav-cta header-cta">
+                <UserPlus size={16} /> ভর্তি হোন <ArrowLeft size={16} />
+              </Link>
+              <div
+                className="language-switch"
+                role="group"
+                aria-label={language === "bn" ? "ভাষা নির্বাচন" : "Select language"}
+              >
+                <button
+                  type="button"
+                  className={language === "bn" ? "active" : ""}
+                  aria-pressed={language === "bn"}
+                  onClick={() => {
+                    setLanguage("bn");
+                    setTopBarHidden(false);
+                  }}
+                >
+                  বাংলা
+                </button>
+                <button
+                  type="button"
+                  className={language === "en" ? "active" : ""}
+                  aria-pressed={language === "en"}
+                  onClick={() => {
+                    setLanguage("en");
+                    setTopBarHidden(false);
+                  }}
+                >
+                  English
+                </button>
+              </div>
+            </div>
+
+            {/* মোবাইল হ্যামবার্গার মেনু বাটন */}
+            <button
+              className="mobile-menu"
+              type="button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={
+                menuOpen
+                  ? language === "bn"
+                    ? "মেনু বন্ধ করুন"
+                    : "Close menu"
+                  : language === "bn"
+                    ? "মেনু খুলুন"
+                    : "Open menu"
+              }
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
 
         {/* প্রধান নেভিগেশন (active section হাইলাইট হয়) */}
@@ -608,7 +630,7 @@ function Index() {
                 <em>সহজ ও আনন্দময়</em>
               </h2>
               <p>
-                নূর অনলাইন মহিলা মাদরাসার লক্ষ্য হলো নারীদের জন্য ঘরে বসে কুরআন ও প্রয়োজনীয় দ্বীনি শিক্ষা
+                অনলাইন মহিলা মাদরাসার লক্ষ্য হলো নারীদের জন্য ঘরে বসে কুরআন ও প্রয়োজনীয় দ্বীনি শিক্ষা
                 অর্জনের একটি সহজ ও যত্নশীল সুযোগ তৈরি করা।
               </p>
               <p>
@@ -725,8 +747,16 @@ function Index() {
                   আরবি হরফ, ১৭টি মাখরাজের পরিচিতি, মাদ, গুন্নাহ, কলকলাহ এবং নামাজে পঠিত ১২টি ছোট সূরা
                   অর্থসহ শেখার লক্ষ্য।
                 </p>
+              </article> 
+              <article className="course-card">
+                <span className="course-photo detail-photo">
+                  <img src={dailyRoutine} alt="দৈনন্দিন রুটিন" loading="lazy" />
+                </span>
+                <h3>দৈনন্দিন রুটিনের মাধ্যমে ভালো অভ্যাস তৈরি করা</h3>
+                <p>
+                  নিয়মিত নামাজ, কুরআন তিলাওয়াত, পড়াশোনা, সময়মতো ঘুম ও দৈনন্দিন কাজের মাধ্যমে সুন্দর জীবনযাপন এবং ভালো অভ্যাস গড়ে তোলা।
+                </p>
               </article>
-
               <article className="course-card">
                 <span className="course-photo detail-photo">
                   <img src={rehalPlants} alt="" loading="lazy" />
@@ -748,7 +778,13 @@ function Index() {
                   পারিবারিক শিক্ষা।
                 </p>
               </article>
-
+              <article className="course-card">
+                <span className="course-photo detail-photo">
+                  <img src={weeklyExam} alt="সাপ্তাহিক পরীক্ষা" loading="lazy" />
+                </span>
+                <h3>সাপ্তাহিক পরীক্ষার মাধ্যমে পড়ার অগ্রগতি</h3>
+                <p>নিয়মিত সাপ্তাহিক পরীক্ষা নেওয়ার মাধ্যমে শিক্ষার্থীদের পড়ার অগ্রগতি যাচাই, দুর্বলতা চিহ্নিতকরণ এবং শেখার দক্ষতা উন্নত করে পড়াশোনাকে আরও সহজ ও কার্যকর করা। </p>
+              </article>
               <article className="course-card">
                 <span className="course-photo detail-photo">
                   <img src={deskStudy} alt="" loading="lazy" />
@@ -812,7 +848,6 @@ function Index() {
                 <li>প্রধান সময়: রাত ৯টা–১০টা</li>
                 <li>বিকল্প সময়: দুপুর ৩টা–৪টা</li>
                 <li>কোর্সের মেয়াদ: ডিসেম্বর–জানুয়ারি (২ মাস)</li>
-                <li>পরীক্ষা ও মেধা যাচাইয়ের ব্যবস্থা</li>
               </ul>
             </div>
           </div>
@@ -881,7 +916,45 @@ function Index() {
         {/* ============================================================
             10. FEES — কোর্স ফি
            ============================================================ */}
-        <section className="section-pad" id="fees">
+
+          <section className="section-pad" id="fees">
+            <div className="container contact-card">
+              <span className="section-kicker">কোর্স ফি ও ভর্তি অফার</span>
+              <h2>সম্পূর্ণ দুই মাসের কোর্স ফি</h2>
+            <div style={{ margin: "15px 0" }}>
+                <span
+                  style={{
+                    fontSize: "25px",
+                    color: "#888",
+                    textDecoration: "line-through",
+                    marginRight: "12px",
+                  }}
+                >
+                  ৳ ২,৫০০
+                </span>
+                <span
+                  style={{
+                    fontSize: "40px",
+                    fontWeight: 700,
+                    color: "orange",
+                  }}
+                >
+                  ৳ ২,০০০
+                </span>
+                <div style={{ color: "green", fontWeight: 600, marginTop: "5px" }}>
+                  বিশেষ অফার মূল্য
+                </div>
+              </div>
+              <p>
+                মেয়াদ: ২ মাস · Zoom অনলাইন ক্লাস · একদিন পর পর ক্লাস · পরীক্ষা ও
+                মেধা যাচাই · প্রথম তিনজনের জন্য বিশেষ পুরস্কার।
+              </p>
+              <Link to="/registration" className="button button-primary fee-enroll-btn">
+                এখনই রেজিস্ট্রেশন করুন <ArrowLeft size={18} />
+              </Link>
+            </div>
+          </section>
+        {/* <section className="section-pad" id="fees">
           <div className="container contact-card">
             <span className="section-kicker">কোর্স ফি ও ভর্তি অফার</span>
             <h2>সম্পূর্ণ দুই মাসের কোর্স ফি</h2>
@@ -894,7 +967,7 @@ function Index() {
               এখনই রেজিস্ট্রেশন করুন <ArrowLeft size={18} />
             </Link>
           </div>
-        </section>
+        </section> */}
 
         {/* ============================================================
             12. WHY US — কেন আমাদের বেছে নেবেন (benefits array থেকে)
@@ -1144,105 +1217,162 @@ function Index() {
       {/* ================================================================
           Footer
          ================================================================ */}
-      <footer className="site-footer">
-        <div className="container footer-main">
-          {/* লোগো ও নাম */}
-          <a className="brand footer-brand" href="#home">
-            <img
-              className="brand-logo"
-              src={logoImage}
-              alt={
-                language === "bn" ? " অনলাইন মহিলা মাদরাসার লোগো" : " Online Women's Madrasa logo"
-              }
-            />
-            <span className="brand-copy">
-              <strong>অনলাইন মহিলা মাদরাসা</strong>
-              <small>আলোর পথে ইলমের যাত্রা</small>
-            </span>
+
+<footer className="site-footer">
+  <div className="container">
+    <div className="footer-main">
+
+      {/* ১. লোগো ও পরিচিতি */}
+      <div className="footer-intro-block">
+        <Link to="/" className="footer-brand">
+          <img
+            src={logoImage}
+            alt="মাদরাসার লোগো"
+            className="brand-logo"
+          />
+          <span>
+            <strong>অনলাইন মহিলা মাদরাসা</strong>
+            <small>Online Women's Madrasa</small>
+          </span>
+        </Link>
+
+        <p>
+          {language === "bn"
+            ? "ইসলামিক শিক্ষার আলো ছড়িয়ে দিতে আমাদের এই অনলাইন শিক্ষা প্রতিষ্ঠান। কুরআন ও সুন্নাহর আলোকে নারীদের জন্য মানসম্মত শিক্ষার সুযোগ।"
+            : "Our online educational institution is dedicated to spreading Islamic knowledge and providing quality education for women through the Quran and Sunnah."}
+        </p>
+
+        <div className="footer-direct-contacts">
+          <a href={`tel:${contactPhone}`} className="footer-contact-badge">
+            <Phone size={17} />
+            <span>{contactPhone}</span>
           </a>
 
-          <div className="footer-intro-block">
-            <p>ঘরে বসে শুদ্ধ কুরআন ও প্রয়োজনীয় ইসলামী জ্ঞান অর্জনের একটি যত্নশীল উদ্যোগ।</p>
-            <div className="footer-direct-contacts">
-              <a href={`tel:${contactPhone}`} className="footer-contact-badge">
-                <Phone size={13} /> {contactPhone}
-              </a>
-              <a href={`mailto:${contactEmail}`} className="footer-contact-badge">
-                <Mail size={13} /> {contactEmail}
-              </a>
-            </div>
-          </div>
+          <a href={`mailto:${contactEmail}`} className="footer-contact-badge">
+            <Mail size={17} />
+            <span>{contactEmail}</span>
+          </a>
 
-          {/* ফুটার লিংক + (থাকলে) WhatsApp ও Facebook */}
-          <div className="footer-links">
-            {footerItems.map((item) => {
-              const Icon = item.icon;
-              if (item.href.startsWith("/")) {
-                return (
-                  <Link to={item.href} key={item.href} className="footer-nav-link">
-                    <Icon size={14} className="footer-icon" />
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              }
-              return (
-                <a href={item.href} key={item.href} className="footer-nav-link">
-                  <Icon size={14} className="footer-icon" />
-                  <span>{item.label}</span>
-                </a>
-              );
-            })}
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="footer-nav-link footer-social-whatsapp"
-            >
-              <MessageCircle size={14} className="footer-icon" />
-              <span>WhatsApp</span>
-            </a>
-            <a href={`tel:${contactPhone}`} className="footer-nav-link footer-social-phone">
-              <PhoneCall size={14} className="footer-icon" />
-              <span>ফোন: {contactPhone}</span>
-            </a>
-            <a href={`mailto:${contactEmail}`} className="footer-nav-link footer-social-email">
-              <Mail size={14} className="footer-icon" />
-              <span>ইমেইল: {contactEmail}</span>
-            </a>
-            {facebookPage && (
-              <a
-                href={facebookPage}
-                target="_blank"
-                rel="noreferrer"
-                className="footer-nav-link footer-social-facebook"
-              >
-                <Facebook size={14} className="footer-icon" />
-                <span>Facebook Page</span>
-              </a>
-            )}
-          </div>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-contact-badge"
+          >
+            <MessageCircle size={17} />
+            <span>WhatsApp</span>
+          </a>
         </div>
+      </div>
 
-        {/* কপিরাইট */}
-        <div className="container footer-bottom">
-          <span>© {new Date().getFullYear()} অনলাইন মহিলা মাদরাসা। সর্বস্বত্ব সংরক্ষিত।</span>
-          {/* Developer Copyright */}
-          <span>
-            {language === "bn" ? "নির্মাণ ও পরিচালনায়" : "Designed & Developed by"}{" "}
+      {/* ২. গুরুত্বপূর্ণ লিংক */}
+      <div className="footer-navigation">
+        <h3 className="footer-heading">
+          {language === "bn" ? "গুরুত্বপূর্ণ লিংক" : "Quick Links"}
+        </h3>
+
+        <div className="footer-links">
+          {footerItems.map((item, index) => (
+            item.href.startsWith("/") ? (
+              <Link
+                to={item.href}
+                key={index}
+                className="footer-nav-link"
+              >
+                <ChevronRight size={14} className="footer-nav-arrow" />
+                <span>{item.label}</span>
+              </Link>
+            ) : (
+              <a
+                href={item.href}
+                key={index}
+                className="footer-nav-link"
+              >
+                <ChevronRight size={14} className="footer-nav-arrow" />
+                <span>{item.label}</span>
+              </a>
+            )
+          ))}
+        </div>
+      </div>
+
+      {/* ৩. যোগাযোগ ও সামাজিক মাধ্যম */}
+      <div className="footer-social-block">
+        <h3 className="footer-heading">
+          {language === "bn" ? "যোগাযোগ করুন" : "Contact Us"}
+        </h3>
+
+        <p>
+          {language === "bn"
+            ? "ভর্তি ও কোর্স সংক্রান্ত যেকোনো তথ্যের জন্য আমাদের সঙ্গে যোগাযোগ করুন।"
+            : "Contact us for admission and course-related information."}
+        </p>
+
+        <div className="footer-social-links">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="footer-social-btn footer-social-wa"
+          >
+            <MessageCircle size={18} />
+          </a>
+
+          <a
+            href={`tel:${contactPhone}`}
+            aria-label="Phone"
+            className="footer-social-btn footer-social-phone"
+          >
+            <Phone size={18} />
+          </a>
+
+          <a
+            href={`mailto:${contactEmail}`}
+            aria-label="Email"
+            className="footer-social-btn footer-social-email"
+          >
+            <Mail size={18} />
+          </a>
+
+          {facebookPage && (
             <a
-              href="https://innovative.com.bd/"
+              href={facebookPage}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold underline underline-offset-4 hover:opacity-80 transition-opacity"
+              aria-label="Facebook"
+              className="footer-social-btn footer-social-fb"
             >
-              Innovative Technology and Engineering
+              <Facebook size={18} />
             </a>
-          </span>
-          {/* <span>
-            <a href="#home">উপরে ফিরে যান ↑</a>
-          </span> */}
+          )}
         </div>
-      </footer>
+      </div>
+
+    </div>
+
+    {/* ৪. কপিরাইট */}
+    <div className="footer-bottom">
+      <p>
+        © {new Date().getFullYear()} অনলাইন মহিলা মাদরাসা।
+        {language === "bn" ? " সর্বস্বত্ব সংরক্ষিত।" : " All rights reserved."}
+      </p>
+
+      <p className="footer-credit">
+        {language === "bn" ? "নির্মাণ ও পরিচালনায়" : "Designed & Developed by"}{" "}
+        <a
+          href="https://innovative.com.bd/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Innovative Technology and Engineering
+        </a>
+      </p>
+    </div>
+
+  </div>
+</footer>
+
 
       {/* ===== Floating "উপরে ফিরে যান" বাটন (৭০০px স্ক্রল করলে দেখা যায়) ===== */}
       <a
