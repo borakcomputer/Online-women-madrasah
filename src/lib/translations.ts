@@ -129,6 +129,15 @@ export const translations: Record<string, { bn: string; en: string }> = {
   "কোর্সের বিস্তারিত": { bn: "কোর্সের বিস্তারিত", en: "Course details" },
   "কী কী": { bn: "কী কী", en: "What you will" },
   "শেখানো হবে": { bn: "শেখানো হবে", en: "learn" },
+  "কোর্সের বিস্তারিত": { bn: "কোর্সের বিস্তারিত", en: "Course details" },
+  "আমাদের সুনির্দিষ্ট ও সমৃদ্ধ পাঠ্যবিষয়গুলো সাজানো হলো।": {
+    bn: "আমাদের সুনির্দিষ্ট ও সমৃদ্ধ পাঠ্যবিষয়গুলো সাজানো হলো।",
+    en: "Our structured and comprehensive curriculum topics.",
+  },
+  "আমাদের সুনির্দিষ্ট ও সমৃদ্ধ পাঠ্যবিষয়গুলো সাজানো হলো।": {
+    bn: "আমাদের সুনির্দিষ্ট ও সমৃদ্ধ পাঠ্যবিষয়গুলো সাজানো হলো।",
+    en: "Our structured and comprehensive curriculum topics.",
+  },
   "PDF-এ নির্ধারিত পাঠ্যবিষয়গুলো একসঙ্গে সাজানো হলো।": {
     bn: "PDF-এ নির্ধারিত পাঠ্যবিষয়গুলো একসঙ্গে সাজানো হলো।",
     en: "The topics covered in the course at a glance.",
@@ -139,6 +148,15 @@ export const translations: Record<string, { bn: string; en: string }> = {
       bn: "আরবি হরফ, ১৭টি মাখরাজের পরিচিতি, মাদ, গুন্নাহ, কলকলাহ এবং নামাজে পঠিত ১২টি ছোট সূরা অর্থসহ শেখার লক্ষ্য।",
       en: "Study Arabic letters, the 17 articulation points, madd, ghunnah, qalqalah, and the meanings of 12 short surahs commonly recited in prayer.",
     },
+  "দৈনন্দিন রুটিনের মাধ্যমে ভালো অভ্যাস তৈরি করা": {
+    bn: "দৈনন্দিন রুটিনের মাধ্যমে ভালো অভ্যাস তৈরি করা",
+    en: "Building Good Habits Through Daily Routine",
+  },
+  "নিয়মিত নামাজ, কুরআন তিলাওয়াত, পড়াশোনা, সময়মতো ঘুম ও দৈনন্দিন কাজের মাধ্যমে সুন্দর জীবনযাপন এবং ভালো অভ্যাস গড়ে তোলা।":
+    {
+      bn: "নিয়মিত নামাজ, কুরআন তিলাওয়াত, পড়াশোনা, সময়মতো ঘুম ও দৈনন্দিন কাজের মাধ্যমে সুন্দর জীবনযাপন এবং ভালো অভ্যাস গড়ে তোলা।",
+      en: "Build a disciplined, meaningful lifestyle through regular prayers, Quran recitation, timely studies, sleep routine, and wholesome daily habits.",
+    },
   "ইসলামের মৌলিক জ্ঞান ও হাদিস": {
     bn: "ইসলামের মৌলিক জ্ঞান ও হাদিস",
     en: "Islamic Foundations and Hadith",
@@ -147,12 +165,34 @@ export const translations: Record<string, { bn: string; en: string }> = {
     bn: "ঈমান ও ইসলামের পরিচয়, শিরক, কুফর, বিদআত, গুনাহ ও নেক আমল এবং গুরুত্বপূর্ণ সহীহ হাদিসের শিক্ষা।",
     en: "Explore faith and Islam, shirk, kufr, bid'ah, sins and good deeds, along with lessons from important authentic hadith.",
   },
+  "ঈমান ও ইসলামের পরিচয়, শিরক, কুফর, বিদআত, গুনাহ ও নেক আমল এবং গুরুত্বপূর্ণ সহীহ হাদিসের শিক্ষা।": {
+    bn: "ঈমান ও ইসলামের পরিচয়, শিরক, কুফর, বিদআত, গুনাহ ও নেক আমল এবং গুরুত্বপূর্ণ সহীহ হাদিসের শিক্ষা।",
+    en: "Explore faith and Islam, shirk, kufr, bid'ah, sins and good deeds, along with lessons from important authentic hadith.",
+  },
   "ইসলামিক প্যারেন্টিং": { bn: "ইসলামিক প্যারেন্টিং", en: "Islamic Parenting" },
   "সন্তানকে ইসলামী আদর্শে গড়ে তোলা, নামাজ ও কুরআনের প্রতি আগ্রহী করা এবং সুন্দর আচরণ ও পারিবারিক শিক্ষা।": {
     bn: "সন্তানকে ইসলামী আদর্শে গড়ে তোলা, নামাজ ও কুরআনের প্রতি আগ্রহী করা এবং সুন্দর আচরণ ও পারিবারিক শিক্ষা।",
     en: "Learn about raising children with Islamic values, encouraging prayer and Quran learning, and nurturing good conduct at home.",
   },
+  "সন্তানকে ইসলামী আদর্শে গড়ে তোলা, নামাজ ও কুরআনের প্রতি আগ্রহী করা এবং সুন্দর আচরণ ও পারিবারিক শিক্ষা।": {
+    bn: "সন্তানকে ইসলামী আদর্শে গড়ে তোলা, নামাজ ও কুরআনের প্রতি আগ্রহী করা এবং সুন্দর আচরণ ও পারিবারিক শিক্ষা।",
+    en: "Learn about raising children with Islamic values, encouraging prayer and Quran learning, and nurturing good conduct at home.",
+  },
+  "সাপ্তাহিক পরীক্ষার মাধ্যমে পড়ার অগ্রগতি": {
+    bn: "সাপ্তাহিক পরীক্ষার মাধ্যমে পড়ার অগ্রগতি",
+    en: "Tracking Progress with Weekly Assessments",
+  },
+  "নিয়মিত সাপ্তাহিক পরীক্ষা নেওয়ার মাধ্যমে শিক্ষার্থীদের পড়ার অগ্রগতি যাচাই, দুর্বলতা চিহ্নিতকরণ এবং শেখার দক্ষতা উন্নত করে পড়াশোনাকে আরও সহজ ও কার্যকর করা।":
+    {
+      bn: "নিয়মিত সাপ্তাহিক পরীক্ষা নেওয়ার মাধ্যমে শিক্ষার্থীদের পড়ার অগ্রগতি যাচাই, দুর্বলতা চিহ্নিতকরণ এবং শেখার দক্ষতা উন্নত করে পড়াশোনাকে আরও সহজ ও কার্যকর করা।",
+      en: "Assess learning progress through regular weekly exams, identify weak areas, and enhance study skills to make learning effortless and effective.",
+    },
   "দৈনন্দিন জীবন ও আমল": { bn: "দৈনন্দিন জীবন ও আমল", en: "Everyday Life and Practice" },
+  "জিন-শয়তানের ফিতনা ও বদনজর বিষয়ে কুরআন-হাদিসের নির্দেশনা, কুসংস্কার থেকে বেঁচে থাকা, মোবাইল আসক্তি নিয়ন্ত্রণ ও সময়ের সঠিক ব্যবহার।":
+    {
+      bn: "জিন-শয়তানের ফিতনা ও বদনজর বিষয়ে কুরআন-হাদিসের নির্দেশনা, কুসংস্কার থেকে বেঁচে থাকা, মোবাইল আসক্তি নিয়ন্ত্রণ ও সময়ের সঠিক ব্যবহার।",
+      en: "Learn relevant Quranic and hadith guidance, avoid superstition, manage phone addiction, and use time wisely.",
+    },
   "জিন-শয়তানের ফিতনা ও বদনজর বিষয়ে কুরআন-হাদিসের নির্দেশনা, কুসংস্কার থেকে বেঁচে থাকা, মোবাইল আসক্তি নিয়ন্ত্রণ ও সময়ের সঠিক ব্যবহার।":
     {
       bn: "জিন-শয়তানের ফিতনা ও বদনজর বিষয়ে কুরআন-হাদিসের নির্দেশনা, কুসংস্কার থেকে বেঁচে থাকা, মোবাইল আসক্তি নিয়ন্ত্রণ ও সময়ের সঠিক ব্যবহার।",

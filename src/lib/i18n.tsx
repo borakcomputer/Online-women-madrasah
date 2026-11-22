@@ -30,7 +30,11 @@ export function localizeNode(node: ReactNode, language: Language): ReactNode {
     const leading = node.match(/^\s*/)?.[0] ?? "";
     const trailing = node.match(/\s*$/)?.[0] ?? "";
     const text = node.trim();
-    return `${leading}${translations[text]?.[language] ?? text}${trailing}`;
+    if (!text) return node;
+    const normalized = text.replace(/\s+/g, " ");
+    const translated =
+      translations[text]?.[language] ?? translations[normalized]?.[language] ?? text;
+    return `${leading}${translated}${trailing}`;
   }
   if (Array.isArray(node)) return Children.map(node, (child) => localizeNode(child, language));
   if (isValidElement<{ children?: ReactNode }>(node) && node.props.children !== undefined) {
