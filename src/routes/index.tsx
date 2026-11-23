@@ -41,7 +41,7 @@ import {
 
 // ---------- Imports: Images ----------
 import heroImage from "../assets/madrasa-quran-hero.jpg";
-import classImage from "../assets/online-quran-class.jpg";
+import classImage from "../assets/online-quran-class.png";
 import logoImage from "../assets/online-women-madrasah-logo.png";
 import quranFlowers from "../assets/photos/quran-flowers.jpg";
 import certificatePhoto from "../assets/photos/certificate.jpg";
@@ -1832,7 +1832,7 @@ function Index() {
         aria-label={language === "bn" ? "হোয়াটসঅ্যাপে যোগাযোগ করুন" : "Chat on WhatsApp"}
         title={language === "bn" ? "হোয়াটসঅ্যাপে যোগাযোগ করুন" : "Chat on WhatsApp"}
       >
-        <MessageCircle size={26} />
+        <MessageCircle size={25} />
       </a>
     </div>,
     language,
