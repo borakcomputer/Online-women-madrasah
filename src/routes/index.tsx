@@ -125,17 +125,17 @@ const courses = [
     tag_en: "Essential knowledge",
   },
   {
-    icon: GraduationCap,
-    photo: thumbRehal,
-    number_bn: "০৪",
-    number_en: "04",
-    title_bn: "হিফজ ও আমপারা",
-    title_en: "Hifz & Ampara Memorization",
-    text_bn: "পরিকল্পিত অনুশীলন ও নিয়মিত পুনরাবৃত্তির মাধ্যমে মুখস্থ করার সহায়তা।",
-    text_en: "Memorize Surahs systematically through planned practice and consistent revision.",
-    tag_bn: "ধাপে ধাপে অগ্রগতি",
-    tag_en: "Step-by-step progress",
-  },
+  icon: GraduationCap,
+  photo: thumbRehal,
+  number_bn: "০৪",
+  number_en: "04",
+  title_bn: "ইসলামের মৌলিক জ্ঞান",
+  title_en: "Fundamental Islamic Knowledge",
+  text_bn: "ইসলামের মৌলিক জ্ঞান এবং প্রকৃত মুসলিম হওয়ার স্বপ্ন বাস্তবায়নে সহায়তা করা হবে ইংশাআল্লাহ্।",
+  text_en: "Helping learners gain fundamental Islamic knowledge and fulfill their dream of becoming true Muslims, In Sha Allah.",
+  tag_bn: "ধাপে ধাপে অগ্রগতি",
+  tag_en: "Step-by-step progress",
+},
 ];
 
 // ---- "কেন আমাদের বেছে নেবেন" section-এর ৪টি সুবিধা ----
@@ -699,8 +699,11 @@ function Index() {
                     ? "অনলাইনে কুরআন শিক্ষা নিচ্ছেন একজন ছাত্রী"
                     : "A student learning the Quran online"
                 }
+                width={1280}
+                height={853}
+                loading="lazy"
               />
-              <div className="intro-image-label rounded-sm">
+              <div className="intro-image-label rounded-sm w-[150px] h-[45px] text-center ">
                 <span>نُور</span>
                 <div>
                   <strong>
@@ -1082,6 +1085,11 @@ function Index() {
                   {language === "bn"
                     ? "কোর্সের মেয়াদ: ডিসেম্বর–জানুয়ারি (২ মাস)"
                     : "Course duration: December–January (2 months)"}
+                </li>
+                <li>
+                  {language === "bn"
+                    ? "পরবর্তী ব্যাচ প্রতি দুই মাস পরপর শুরু হবে ইংশাআল্লাহ্।"
+                    : "The next batch will start every two months, In Sha Allah."}
                 </li>
               </ul>
             </div>
