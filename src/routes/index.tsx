@@ -1570,9 +1570,29 @@ function Index() {
                     ? "ঘরে বসেই সহজ ৩ ধাপে রেজিস্ট্রেশন"
                     : "Simple 3-step online registration"}
                 </p>
-                <div className="contact-card-val">
-                  {language === "bn" ? "কোর্স ফি মাত্র ৳ ২,০০০" : "Course fee only BDT 2,000"}
-                </div>
+                <div style={{ color: "#3b537c", fontSize:15, fontWeight: 600, marginTop: "3px" }}>
+                {language === "bn" ? "বিশেষ অফার মূল্য" : "Special Offer Price"}
+              </div>
+                <span
+                style={{
+                  fontSize: "15px",
+                  color: "#888",
+                  textDecoration: "line-through",
+                  marginRight: "8px",
+                }}
+              >
+                {language === "bn" ? "৳ ২,৫০০" : "BDT 2,500"}
+              </span>
+              <span
+                style={{
+                  fontSize: "25px",
+                  fontWeight: 700,
+                  color: "#5475ad",
+                }}
+              >
+                {language === "bn" ? "৳ ২,০০০" : "BDT 2,000"}
+              </span>
+              
                 <span className="contact-card-time">
                   {language === "bn"
                     ? "২ মাসের পূর্ণাঙ্গ অনলাইন কোর্স"
