@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 // স্ক্রল বা পেজ লোডের সময় সেকশন ও কার্ডগুলো মসৃণ অ্যানিমেশনে দৃশ্যমান হয়
 const SELECTOR =
-  ".section-heading, .course-card, .benefit-item, .step, .faq-item, .intro-copy, .intro-image, .contact-card, .contact-item-card, .contact-banner-card, .importance-photo, .importance-copy, .photo-frame, .curriculum-extra .course-card, .teacher-card, .reg-help-card, .highlight-pill, .rf-card, .rf-stepper, .register-heading";
+  ".section-heading, .course-card, .benefit-item, .step, .faq-item, .intro-copy, .intro-image, .contact-card, .contact-item-card, .contact-banner-card, .importance-photo, .importance-copy, .photo-frame, .curriculum-extra .course-card, .teacher-card, .reg-help-card, .highlight-pill, .rf-card, .rf-stepper, .register-heading, .why-feature-card, .why-us-visual, .why-us-copy";
 
 export function useReveal() {
   useEffect(() => {

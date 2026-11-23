@@ -703,7 +703,7 @@ function Index() {
                 height={853}
                 loading="lazy"
               />
-              <div className="intro-image-label rounded-sm w-[150px] h-[45px] text-center ">
+              <div className="intro-image-label rounded-sm ">
                 <span>نُور</span>
                 <div>
                   <strong>
@@ -1801,6 +1801,18 @@ function Index() {
         aria-label={language === "bn" ? "উপরে ফিরে যান" : "Back to top"}
       >
         <ArrowLeft size={20} />
+      </a>
+
+      {/* ===== Floating WhatsApp চ্যাট বাটন (সব সময় দৃশ্যমান ও আকর্ষণীয় বাউন্স অ্যানিমেশন) ===== */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="float-wa"
+        aria-label={language === "bn" ? "হোয়াটসঅ্যাপে যোগাযোগ করুন" : "Chat on WhatsApp"}
+        title={language === "bn" ? "হোয়াটসঅ্যাপে যোগাযোগ করুন" : "Chat on WhatsApp"}
+      >
+        <MessageCircle size={26} />
       </a>
     </div>,
     language,

@@ -405,14 +405,16 @@ p {
 .hero-bottom {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 18px;
   margin-top: 30px;
   color: #475569;
   font-size: 14px;
+  text-align: left;
 }
 .hero-bottom span:first-child {
   font-family: serif;
-  color: #3f7541;
+  color: #475569;
   font-size: 16px;
 }
 
@@ -442,9 +444,16 @@ p {
   top: 22px;
   right: 0;
   bottom: 0;
-  border: 1px solid #afd2b0;
+  border: 1.5px solid #afd2b0;
   border-radius: 8px;
   pointer-events: none;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
+}
+.intro-image:hover:before {
+  transform: translate(3px, 3px);
+  border-color: var(--green);
 }
 .intro-image img {
   position: relative;
@@ -468,6 +477,14 @@ p {
   box-shadow: 0 10px 35px #17263e16;
   border: 1px solid rgba(175, 210, 176, 0.4);
   z-index: 2;
+  animation: owm-badge-float 4.5s ease-in-out infinite;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+}
+.intro-image-label:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(17, 38, 62, 0.16);
 }
 .intro-image-label > span {
   font-family: serif;
@@ -570,14 +587,34 @@ p {
   min-height: 294px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
   transition:
-    transform 0.25s,
-    box-shadow 0.25s,
-    border 0.25s;
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
+}
+.course-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, var(--green), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.course-card:hover::before {
+  transform: scaleX(1);
 }
 .course-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 17px 35px #1c2d4a0d;
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 42px -12px rgba(10, 44, 102, 0.14),
+    0 0 0 1px rgba(111, 163, 118, 0.25);
   border-color: #afd2b0;
 }
 .course-card-top {
@@ -594,11 +631,27 @@ p {
   place-items: center;
   background: #eaedf3;
   color: var(--green);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.course-card:hover .course-icon {
+  transform: rotate(-8deg) scale(1.12);
+  background: var(--green);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(30, 114, 55, 0.25);
 }
 .course-number {
   font-family: serif;
   color: #afd2b0;
   font-size: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.course-card:hover .course-number {
+  transform: scale(1.08);
+  color: var(--green);
 }
 .course-tag {
   font-size: 13px;
@@ -713,6 +766,11 @@ p {
   align-items: center;
   justify-content: center;
   filter: drop-shadow(0 12px 28px rgba(10, 44, 102, 0.12));
+  animation: owm-badge-float 5.5s ease-in-out infinite;
+}
+
+.why-us-photo-frame:hover {
+  animation-play-state: paused;
 }
 
 .why-us-student-img {
@@ -721,11 +779,11 @@ p {
   max-width: 200px;
   height: auto;
   object-fit: contain;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .why-us-visual:hover .why-us-student-img {
-  transform: scale(1.03);
+  transform: scale(1.06);
 }
 
 /* 2. Middle: Copy, Badges, Title with underline, Button */
@@ -781,6 +839,18 @@ p {
   width: 100%;
   height: 8px;
   pointer-events: none;
+}
+
+.why-title-underline path {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: owm-draw-underline 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+@keyframes owm-draw-underline {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .why-us-copy .why-us-description,
@@ -852,16 +922,16 @@ p {
   flex-direction: column;
   gap: 10px;
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.25s ease;
   position: relative;
   overflow: hidden;
 }
 
 .why-feature-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(10, 44, 102, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(10, 44, 102, 0.12);
   border-color: #cbdcf2;
 }
 
@@ -888,11 +958,11 @@ p {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  transition: transform 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .why-feature-card:hover .why-feature-icon-box {
-  transform: scale(1.08);
+  transform: scale(1.15) rotate(5deg);
 }
 
 .why-feature-icon-box.icon-blue {
@@ -1030,12 +1100,43 @@ p {
   margin: 0 auto 15px;
   width: 56px;
   height: 56px;
-  border: 1px solid #b0d2b1;
+  border: 1.5px solid #b0d2b1;
   border-radius: 50%;
   font-family: serif;
   color: #3a6c3c;
   font-size: 20px;
   background: #f2f5f9;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.step:hover > span {
+  transform: scale(1.12);
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green);
+  box-shadow: 0 8px 22px rgba(46, 125, 50, 0.32);
+}
+.steps-grid .step:nth-child(1) > span {
+  animation: owm-step-pulse 3.2s ease-in-out infinite;
+}
+.steps-grid .step:nth-child(3) > span {
+  animation: owm-step-pulse 3.2s ease-in-out 1.1s infinite;
+}
+.steps-grid .step:nth-child(5) > span {
+  animation: owm-step-pulse 3.2s ease-in-out 2.2s infinite;
+}
+@keyframes owm-step-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 143, 87, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 9px rgba(79, 143, 87, 0);
+  }
 }
 .step h3 {
   font-family: "Noto Serif Bengali", serif;
@@ -1053,6 +1154,16 @@ p {
   color: #559e58;
   display: grid;
   place-items: center;
+  animation: owm-arrow-nudge 2.2s ease-in-out infinite;
+}
+@keyframes owm-arrow-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
 }
 
 /* ============================================================
@@ -1291,8 +1402,10 @@ p {
     margin-top: 19px;
     gap: 9px;
     align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
     font-size: 10px;
+    text-align: left;
   }
   .section-pad {
     padding: 32px 0;
@@ -1659,10 +1772,14 @@ p {
   border: 1px solid #e1e8f2;
   box-shadow: 0 4px 14px rgba(10, 44, 102, 0.04);
   background: #ffffff;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
 }
 .curriculum-extra .course-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(10, 44, 102, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(10, 44, 102, 0.1);
   border-color: #93c5fd;
 }
 .curriculum-extra .course-photo.detail-photo {
@@ -1678,6 +1795,10 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.curriculum-extra .course-card:hover .course-photo.detail-photo img {
+  transform: scale(1.14);
 }
 .site-footer a {
   cursor: pointer;
@@ -4141,12 +4262,14 @@ footer {
 /* Button Shimmer Effect on CTA Buttons */
 .button-primary,
 .nav-cta,
+.why-us-action-btn,
 .rf-submit-btn {
   position: relative;
   overflow: hidden;
 }
 .button-primary::after,
 .nav-cta::after,
+.why-us-action-btn::after,
 .rf-submit-btn::after {
   content: "";
   position: absolute;
@@ -4161,6 +4284,7 @@ footer {
 }
 .button-primary:hover::after,
 .nav-cta:hover::after,
+.why-us-action-btn:hover::after,
 .rf-submit-btn:hover::after {
   animation: owm-btn-shimmer 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -4176,13 +4300,21 @@ footer {
 /* Micro-interaction: Arrow & Icon Motion */
 .rf-submit-btn svg,
 .button-primary svg,
-.nav-cta svg {
+.nav-cta svg,
+.text-link svg,
+.course-enroll-btn svg,
+.course-link svg {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .rf-submit-btn:hover svg {
   transform: translateX(4px);
 }
 .header-cta:hover svg:last-child {
+  transform: translateX(-4px);
+}
+.text-link:hover svg,
+.course-enroll-btn:hover svg,
+.course-link:hover svg {
   transform: translateX(-4px);
 }
 
@@ -4240,7 +4372,36 @@ footer {
 
 /* Interactive Floating WhatsApp Button Pulse */
 .float-wa {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  z-index: 35;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
   animation: owm-wa-bounce 3.5s ease-in-out infinite;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  text-decoration: none;
+}
+.float-wa:hover {
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.65);
+  color: #ffffff;
+}
+@media (max-width: 760px) {
+  .float-wa {
+    right: 14px;
+    bottom: 74px;
+    width: 48px;
+    height: 48px;
+  }
 }
 @keyframes owm-wa-bounce {
   0%,
