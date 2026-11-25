@@ -657,7 +657,9 @@ p {
   font-family: serif;
   color: #afd2b0;
   font-size: 20px;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 .course-card:hover .course-number {
   transform: scale(1.08);
