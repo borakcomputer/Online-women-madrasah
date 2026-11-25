@@ -56,6 +56,8 @@ import thumbParenting from "../assets/photos/thumb-parenting.jpg";
 import dailyRoutine from "../assets/photos/daily-routine.jpg";
 import weeklyExam from "../assets/photos/weekly-exam.jpg";
 import whyUsStudent from "../assets/photos/why-us-student.png";
+import islamicParenting from "../assets/photos/islamic-parenting.jpg";
+
 
 // =====================================================================
 // Route definition — page title ও SEO/OpenGraph meta tag
@@ -942,7 +944,7 @@ function Index() {
               {/* Card 4 */}
               <article className="course-card">
                 <span className="course-photo detail-photo">
-                  <img src={thumbParenting} alt="" loading="lazy" />
+                  <img src={islamicParenting} alt="" loading="lazy" />
                 </span>
                 <h3>{language === "bn" ? "ইসলামিক প্যারেন্টিং" : "Islamic Parenting"}</h3>
                 <p>
@@ -1200,7 +1202,6 @@ function Index() {
                 alt={language === "bn" ? "সনদের নমুনা চিত্র" : "Illustrative certificate"}
                 loading="lazy"
               />
-              <figcaption>{language === "bn" ? "নমুনা চিত্র" : "Sample Certificate"}</figcaption>
             </figure>
           </div>
         </section>
