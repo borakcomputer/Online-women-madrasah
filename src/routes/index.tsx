@@ -1117,9 +1117,54 @@ function Index() {
             </h2>
             <p>
               {language === "bn"
-                ? "আমাদের অভিজ্ঞ ও যোগ্য নারী শিক্ষিকাগণ অত্যন্ত যত্ন, ধৈর্য ও স্নেহের সাথে প্রতিটি শিক্ষার্থীকে কুরআন তিলাওয়াত, সহীহ মাখরাজ ও তাজবিদ শিক্ষা প্রদান করেন। নারী শিক্ষার্থীদের জন্য এটি সম্পূর্ণ নিরাপদ, মার্জিত ও পর্দাশীল পরিবেশ।"
-                : "Our experienced and qualified female teachers provide careful, patient, and affectionate guidance in Quran recitation, proper articulation, and Tajweed. A safe, modest, and dedicated environment tailored for women."}
+                ? "আমাদের অভিজ্ঞ ও যোগ্য নারী শিক্ষিকা অত্যন্ত যত্ন, ধৈর্য ও স্নেহের সাথে প্রতিটি শিক্ষার্থীকে কুরআন তিলাওয়াত, সহীহ মাখরাজ ও তাজবিদ শিক্ষা প্রদান করেন। নারী শিক্ষার্থীদের জন্য এটি সম্পূর্ণ নিরাপদ, মার্জিত ও পর্দাশীল পরিবেশ।"
+                : "Our experienced and qualified female teacher provides careful, patient, and affectionate guidance in Quran recitation, proper articulation, and Tajweed. A safe, modest, and dedicated environment tailored for women."}
             </p>
+            <div className="teacher-profile-card">
+              <div className="teacher-info-grid">
+                <div className="teacher-info-item">
+                  <span className="teacher-info-label">
+                    {language === "bn" ? "শিক্ষিকার নাম" : "Teacher's Name"}
+                  </span>
+                  <span className="teacher-info-value">
+                    {language === "bn" ? "ফাতেমা উলফাত" : "Fatema Ulfat"}
+                  </span>
+                </div>
+                <div className="teacher-info-item">
+                  <span className="teacher-info-label">
+                    {language === "bn" ? "শিক্ষাগত যোগ্যতা" : "Educational Qualification"}
+                  </span>
+                  <span className="teacher-info-value">
+                    {language === "bn"
+                      ? "আলেমা, দাওরায়ে হাদীস (মাষ্টার সম্মাননা)"
+                      : "Alema, Dawra-e-Hadith (Master's Equivalent)"}
+                  </span>
+                </div>
+                <div className="teacher-info-item">
+                  <span className="teacher-info-label">
+                    {language === "bn" ? "প্রতিষ্ঠানের নাম" : "Institution"}
+                  </span>
+                  <span className="teacher-info-value">
+                    {language === "bn"
+                      ? "জামিয়া ইসলামিয়া আশরাফুল উলুম ছনটেক মহিলা মাদরাসা, যাত্রাবাড়ী, ঢাকা"
+                      : "Jamia Islamia Ashraful Ulum Chhontek Mohila Madrasah, Jatrabari, Dhaka"}
+                  </span>
+                </div>
+                <div className="teacher-info-item">
+                  <span className="teacher-info-label">
+                    {language === "bn" ? "জেলা" : "District"}
+                  </span>
+                  <span className="teacher-info-value">
+                    {language === "bn" ? "নারায়ণগঞ্জ" : "Narayanganj"}
+                  </span>
+                </div>
+              </div>
+              <p className="teacher-closing-note">
+                {language === "bn"
+                  ? "দ্বীনি খেদমতে দীর্ঘদিনের অভিজ্ঞতাসম্পন্ন, আপনার শেখার এই নতুন যাত্রায় পাশে থাকবেন ইংশাআল্লাহ্।"
+                  : "With years of experience in Islamic service and teaching, she will guide and support you on this new journey of learning, In Sha Allah."}
+              </p>
+            </div>
           </div>
         </section>
 
